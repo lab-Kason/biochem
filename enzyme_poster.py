@@ -65,13 +65,6 @@ def local_css():
         border: 1px solid #e9ecef;
         margin: 0.5rem 0;
     }
-    .pipeline-stage {
-        background: linear-gradient(45deg, #2E86AB, #A23B72);
-        color: white;
-        padding: 1rem;
-        border-radius: 10px;
-        margin: 0.5rem 0;
-    }
     </style>
     """, unsafe_allow_html=True)
 
@@ -100,7 +93,7 @@ def create_header():
         )
     return selected
 
-# ==================== PAGE 1: OVERVIEW ====================
+# Overview Section
 def show_overview():
     st.markdown('<div class="section-header">📊 Executive Summary</div>', unsafe_allow_html=True)
     
@@ -135,7 +128,7 @@ def show_overview():
         fig.update_layout(showlegend=False, height=300, margin=dict(l=0, r=0, t=0, b=0))
         st.plotly_chart(fig, use_container_width=True)
 
-# ==================== PAGE 2: MECHANISMS ====================
+# Interactive Mechanisms Section
 def show_mechanisms():
     st.markdown('<div class="section-header">🔬 Inhibition Mechanisms</div>', unsafe_allow_html=True)
     
@@ -216,7 +209,7 @@ def show_mechanisms():
         )
         st.plotly_chart(fig, use_container_width=True)
 
-# ==================== PAGE 3: CASE STUDIES ====================
+# Case Studies Section
 def show_case_studies():
     st.markdown('<div class="section-header">💊 Successful Drug Case Studies</div>', unsafe_allow_html=True)
     
@@ -240,211 +233,13 @@ def show_case_studies():
             </div>
             """, unsafe_allow_html=True)
         with col2:
+            # Simple efficacy chart
             data = {'Year': [1990, 2000, 2010, 2020],
                    'Cardiac Deaths per 1000': [8.5, 6.2, 4.1, 2.8]}
             df = pd.DataFrame(data)
             fig = px.line(df, x='Year', y='Cardiac Deaths per 1000', 
                          title="Impact on Cardiac Mortality")
             st.plotly_chart(fig, use_container_width=True)
-    
-    elif case_study == "HIV Protease Inhibitors":
-        col1, col2 = st.columns([1, 1])
-        with col1:
-            st.markdown("""
-            <div class="drug-card">
-            <h4>💊 Ritonavir</h4>
-            <b>Target:</b> HIV-1 protease<br>
-            <b>Mechanism:</b> Competitive inhibition<br>
-            <b>Disease:</b> HIV/AIDS<br>
-            <b>Impact:</b> Transformed HIV into manageable chronic condition
-            </div>
-            """, unsafe_allow_html=True)
-        with col2:
-            data = {'Year': [1995, 2000, 2005, 2010, 2020],
-                   'HIV Deaths (thousands)': [50, 22, 12, 8, 3]}
-            df = pd.DataFrame(data)
-            fig = px.line(df, x='Year', y='HIV Deaths (thousands)', 
-                         title="Reduction in HIV Mortality")
-            st.plotly_chart(fig, use_container_width=True)
-    
-    elif case_study == "ACE Inhibitors (Blood Pressure)":
-        st.markdown("""
-        <div class="drug-card">
-        <h4>💊 Lisinopril</h4>
-        <b>Target:</b> Angiotensin-converting enzyme (ACE)<br>
-        <b>Mechanism:</b> Competitive inhibition<br>
-        <b>Disease:</b> Hypertension, Heart Failure<br>
-        <b>Impact:</b> First-line therapy for hypertension worldwide
-        </div>
-        """, unsafe_allow_html=True)
-
-# ==================== PAGE 4: KINETICS ====================
-def show_kinetics():
-    st.markdown('<div class="section-header">📈 Interactive Kinetics Explorer</div>', unsafe_allow_html=True)
-    
-    col1, col2 = st.columns([1, 2])
-    
-    with col1:
-        st.subheader("Kinetic Parameters")
-        
-        # Michaelis-Menten parameters
-        km = st.slider("Michaelis Constant (Km)", 0.1, 10.0, 1.0, 0.1, key="kinetics_km")
-        vmax = st.slider("Maximum Velocity (Vmax)", 1.0, 100.0, 50.0, 1.0, key="kinetics_vmax")
-        
-        # Inhibitor parameters
-        inhibitor_present = st.checkbox("Add Inhibitor", value=True)
-        if inhibitor_present:
-            ki = st.slider("Inhibition Constant (Ki)", 0.1, 5.0, 1.0, 0.1)
-            inhibitor_type = st.selectbox("Inhibitor Type", ["Competitive", "Non-competitive", "Uncompetitive"])
-            inhibitor_concentration = st.slider("[Inhibitor]", 0.1, 10.0, 1.0, 0.1)
-    
-    with col2:
-        # Generate kinetic data
-        substrate_conc = np.linspace(0.1, 20, 100)
-        
-        # No inhibitor curve
-        velocity_no_inhib = vmax * substrate_conc / (km + substrate_conc)
-        
-        fig = go.Figure()
-        fig.add_trace(go.Scatter(
-            x=substrate_conc, y=velocity_no_inhib,
-            name='No Inhibitor',
-            line=dict(color='blue', width=3)
-        ))
-        
-        if inhibitor_present:
-            # Calculate inhibited velocity based on type
-            if inhibitor_type == "Competitive":
-                alpha = 1 + (inhibitor_concentration / ki)
-                velocity_inhib = vmax * substrate_conc / (km * alpha + substrate_conc)
-            elif inhibitor_type == "Non-competitive":
-                alpha = 1 + (inhibitor_concentration / ki)
-                velocity_inhib = (vmax / alpha) * substrate_conc / (km + substrate_conc)
-            else:  # Uncompetitive
-                alpha = 1 + (inhibitor_concentration / ki)
-                velocity_inhib = vmax * substrate_conc / (km + substrate_conc * alpha)
-            
-            fig.add_trace(go.Scatter(
-                x=substrate_conc, y=velocity_inhib,
-                name=f'With {inhibitor_type} Inhibitor',
-                line=dict(color='red', width=3, dash='dash')
-            ))
-        
-        fig.update_layout(
-            title="Michaelis-Menten Kinetics",
-            xaxis_title="Substrate Concentration [S] (mM)",
-            yaxis_title="Reaction Velocity v (μM/min)",
-            height=500
-        )
-        st.plotly_chart(fig, use_container_width=True)
-
-# ==================== PAGE 5: PIPELINE ====================
-def show_pipeline():
-    st.markdown('<div class="section-header">⏳ Drug Development Pipeline</div>', unsafe_allow_html=True)
-    
-    # Interactive pipeline stages
-    stages = [
-        {"name": "Target Identification", "duration": "1-2 years", "success_rate": "High"},
-        {"name": "Lead Discovery", "duration": "1-2 years", "success_rate": "Medium"},
-        {"name": "Preclinical Testing", "duration": "2-3 years", "success_rate": "60%"},
-        {"name": "Phase I Clinical Trials", "duration": "1-2 years", "success_rate": "50%"},
-        {"name": "Phase II Clinical Trials", "duration": "2-3 years", "success_rate": "30%"},
-        {"name": "Phase III Clinical Trials", "duration": "3-4 years", "success_rate": "25%"},
-        {"name": "Regulatory Approval", "duration": "1-2 years", "success_rate": "85%"},
-        {"name": "Post-Market Surveillance", "duration": "Ongoing", "success_rate": "N/A"}
-    ]
-    
-    selected_stage = st.selectbox("Select Development Stage to Explore:", [s["name"] for s in stages])
-    
-    col1, col2 = st.columns([1, 2])
-    
-    with col1:
-        for stage in stages:
-            if stage["name"] == selected_stage:
-                st.markdown(f"""
-                <div class="pipeline-stage">
-                <h4>🎯 {stage['name']}</h4>
-                <b>Duration:</b> {stage['duration']}<br>
-                <b>Success Rate:</b> {stage['success_rate']}<br>
-                <b>Key Activities:</b> Target validation, assay development
-                </div>
-                """, unsafe_allow_html=True)
-    
-    with col2:
-        # Pipeline visualization
-        pipeline_data = {
-            'Stage': [s["name"] for s in stages],
-            'Duration (years)': [float(s["duration"].split('-')[0]) for s in stages],
-            'Success Rate (%)': [100 if s["success_rate"] == "High" else 
-                               80 if s["success_rate"] == "Medium" else
-                               60 if s["success_rate"] == "60%" else
-                               50 if s["success_rate"] == "50%" else
-                               30 if s["success_rate"] == "30%" else
-                               25 if s["success_rate"] == "25%" else
-                               85 if s["success_rate"] == "85%" else 0 for s in stages]
-        }
-        
-        fig = px.bar(pipeline_data, x='Stage', y='Success Rate (%)',
-                    title="Success Rates Across Development Stages",
-                    color='Success Rate (%)')
-        fig.update_layout(xaxis_tickangle=-45)
-        st.plotly_chart(fig, use_container_width=True)
-
-# ==================== PAGE 6: FUTURE TRENDS ====================
-def show_future_trends():
-    st.markdown('<div class="section-header">🚀 Future Directions & Emerging Technologies</div>', unsafe_allow_html=True)
-    
-    trend = st.selectbox(
-        "Explore Future Trends:",
-        ["AI in Drug Discovery", "PROTAC Technology", "Allosteric Inhibitors", 
-         "Personalized Medicine", "Multi-target Inhibitors"]
-    )
-    
-    if trend == "AI in Drug Discovery":
-        st.markdown("""
-        <div class="info-card">
-        <h3>🤖 Artificial Intelligence in Enzyme Inhibitor Discovery</h3>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        st.write("""
-        **Current Applications:**
-        - Predictive modeling of inhibitor-enzyme interactions
-        - High-throughput virtual screening
-        - De novo drug design using generative AI
-        
-        **Impact:**
-        - Reduced discovery time from years to months
-        - Higher success rates in clinical trials
-        - Identification of novel binding sites
-        """)
-        
-        # AI adoption timeline
-        data = {'Year': [2020, 2022, 2024, 2026, 2028],
-               'AI-Adopted Projects (%)': [15, 35, 60, 80, 95]}
-        df = pd.DataFrame(data)
-        fig = px.line(df, x='Year', y='AI-Adopted Projects (%)', 
-                     title="Projected AI Adoption in Drug Discovery")
-        st.plotly_chart(fig, use_container_width=True)
-    
-    elif trend == "PROTAC Technology":
-        st.markdown("""
-        <div class="info-card">
-        <h3>🔗 PROTACs: Proteolysis-Targeting Chimeras</h3>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        st.write("""
-        **Revolutionary Approach:**
-        - Instead of inhibiting, they tag enzymes for destruction
-        - Can target "undruggable" enzymes
-        - Higher specificity and lower dosing
-        
-        **Advantages:**
-        - Overcome drug resistance
-        - Target previously inaccessible enzymes
-        - Longer duration of action
-        """)
 
 # Main application flow
 def main():
@@ -457,11 +252,14 @@ def main():
     elif selected_section == "Case Studies":
         show_case_studies()
     elif selected_section == "Kinetics":
-        show_kinetics()
+        st.markdown('<div class="section-header">📊 Interactive Kinetics Explorer</div>', unsafe_allow_html=True)
+        # Add kinetic explorer content
     elif selected_section == "Pipeline":
-        show_pipeline()
+        st.markdown('<div class="section-header">⏳ Drug Development Pipeline</div>', unsafe_allow_html=True)
+        # Add pipeline content
     else:
-        show_future_trends()
+        st.markdown('<div class="section-header">🚀 Future Directions</div>', unsafe_allow_html=True)
+        # Add future trends content
     
     # Footer
     st.markdown("---")
