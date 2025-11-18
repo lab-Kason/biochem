@@ -240,12 +240,12 @@ def show_calculator():
             for i in range(num_points):
                 col_a, col_b = st.columns(2)
                 with col_a:
-                    conc = st.number_input(f"[I]_{i+1} (µM)", min_value=0.0, value=float(i+1)*2, 
+                    conc = st.number_input(f"[I]_{i+1} (µM)", min_value=0.0, value=float((i+1)*2), 
                                           step=0.1, key=f"conc_{i}")
                     concentrations.append(conc)
                 with col_b:
                     act = st.number_input(f"Activity_{i+1} (%)", min_value=0.0, max_value=100.0, 
-                                        value=max(10.0, 100 - i*18), step=1.0, key=f"act_{i}")
+                                        value=float(max(10, 100 - i*18)), step=1.0, key=f"act_{i}")
                     activities.append(act)
         
         with col2:
