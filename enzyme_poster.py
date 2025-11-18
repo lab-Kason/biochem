@@ -127,6 +127,9 @@ def show_overview():
                     color='Category', color_discrete_sequence=px.colors.qualitative.Set3)
         fig.update_layout(showlegend=False, height=300, margin=dict(l=0, r=0, t=0, b=0))
         st.plotly_chart(fig, width='stretch')
+        
+        st.caption("""*Data sources: FDA Drug Approvals Database (2024); ClinicalTrials.gov; 
+        Evaluate Pharma Market Reports (2023); DiMasi et al. (2016) clinical development success rates.*""")
 
 # Interactive Mechanisms Section
 def show_mechanisms():
@@ -673,6 +676,9 @@ mevalonate, thereby reducing cholesterol production in the liver.
                          markers=True)
             fig.update_layout(height=350)
             st.plotly_chart(fig, width='stretch')
+            st.caption("""*Data source: CDC Wonder Database, Age-Adjusted Death Rates. 
+            Trends correlate with statin introduction and widespread adoption (Istvan & Deisenhofer, 2001; 
+            Heart Protection Study, 2002).*""")
             
             # Market comparison
             statin_data = pd.DataFrame({
@@ -684,6 +690,8 @@ mevalonate, thereby reducing cholesterol production in the liver.
                          color='Type', title='Comparative Potency of Statins')
             fig2.update_layout(height=300)
             st.plotly_chart(fig2, width='stretch')
+            st.caption("""*Data source: Pharmacotherapy meta-analysis (Jones et al., 2003). 
+            LDL-C reduction at standard doses. https://doi.org/10.1592/phco.23.7.871.32733*""")
     
     elif case_study == "HIV Protease Inhibitors":
         col1, col2 = st.columns([1, 1])
@@ -727,6 +735,8 @@ polyproteins, blocking the maturation of infectious viral particles.
                         color_continuous_scale='Viridis')
             fig.update_layout(height=350, showlegend=False)
             st.plotly_chart(fig, width='stretch')
+            st.caption("""*Data sources: Palella et al. (1998) NEJM; Antiretroviral Therapy Cohort Collaboration (2008); 
+            UNAIDS Global AIDS Update (2020). https://doi.org/10.1056/NEJM199803263381301*""")
             
             # Drug potency comparison
             st.markdown("**Protease Inhibitor Potency (IC50 values):**")
@@ -739,6 +749,8 @@ polyproteins, blocking the maturation of infectious viral particles.
                          log_y=True)
             fig2.update_layout(height=300)
             st.plotly_chart(fig2, width='stretch')
+            st.caption("""*Data source: Flexner (1998) HIV-protease inhibitors. NEJM 338(18):1281-1293. 
+            https://doi.org/10.1056/NEJM199804303381808*""")
     
     elif case_study == "ACE Inhibitors (Blood Pressure)":
         col1, col2 = st.columns([1, 1])
@@ -785,6 +797,8 @@ in the ACE active site, preventing substrate binding.
                             yaxis_title='Blood Pressure (mmHg)',
                             height=350)
             st.plotly_chart(fig, width='stretch')
+            st.caption("""*Representative data based on clinical trials: ALLHAT (2002), HOPE Study (Yusuf et al., 2000). 
+            https://doi.org/10.1056/NEJM200001203420301*""")
             
             # Cardiovascular outcomes
             outcome_data = pd.DataFrame({
@@ -796,6 +810,8 @@ in the ACE active site, preventing substrate binding.
                          color='Risk Reduction (%)', color_continuous_scale='Greens')
             fig2.update_layout(height=300, showlegend=False)
             st.plotly_chart(fig2, width='stretch')
+            st.caption("""*Data compiled from: SAVE Trial (Pfeffer et al., 1992), HOPE Study (Yusuf et al., 2000), 
+            SOLVD Trial. Meta-analysis values averaged across major trials.*""")
     
     elif case_study == "Kinase Inhibitors (Cancer)":
         col1, col2 = st.columns([1, 1])
@@ -838,6 +854,8 @@ cancer cell proliferation and survival.
                         color_continuous_scale='Blues')
             fig.update_layout(height=350, showlegend=False)
             st.plotly_chart(fig, width='stretch')
+            st.caption("""*Data sources: Druker et al. (2001) NEJM; Hochhaus et al. (2017) 10-year follow-up study. 
+            https://doi.org/10.1056/NEJM200104053441401 & https://doi.org/10.1056/NEJMoa1609324*""")
             
             # Kinase inhibitor selectivity
             st.markdown("**Selectivity Profile:**")
@@ -851,6 +869,8 @@ cancer cell proliferation and survival.
                          color='Type', log_y=True)
             fig2.update_layout(height=300)
             st.plotly_chart(fig2, width='stretch')
+            st.caption("""*Data source: Deininger et al. (2005) The development of imatinib as a therapeutic agent. 
+            Blood 105(7):2640-2653. https://doi.org/10.1182/blood-2004-08-3097*""")
     
     else:  # COX-2 Inhibitors (Pain)
         col1, col2 = st.columns([1, 1])
@@ -899,6 +919,8 @@ pain relief with reduced gastrointestinal side effects.
                             barmode='group',
                             height=350)
             st.plotly_chart(fig, width='stretch')
+            st.caption("""*Data source: Vane & Botting (1998) Mechanism of action of NSAIDs. 
+            American Journal of Medicine 104(3A):2S-8S. https://doi.org/10.1016/S0002-9343(97)00203-9*""")
             
             # Side effect comparison
             side_effects = pd.DataFrame({
@@ -918,6 +940,8 @@ pain relief with reduced gastrointestinal side effects.
                              barmode='group',
                              height=300)
             st.plotly_chart(fig2, width='stretch')
+            st.caption("""*Data sources: CLASS Study (Silverstein et al., 2000) & VIGOR Trial (Bombardier et al., 2000). 
+            https://doi.org/10.1001/jama.284.10.1247 & https://doi.org/10.1056/NEJM200011233432103*""")
 
 # Main application flow
 def main():
@@ -1029,6 +1053,7 @@ def main():
                 fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgray')
                 
                 st.plotly_chart(fig, width='stretch')
+                st.caption("*Theoretical simulation based on Michaelis-Menten enzyme kinetics equations (Segel, 1993).*")
                 
                 # Display calculated parameters
                 st.markdown("**Calculated Parameters:**")
@@ -1085,6 +1110,7 @@ def main():
                 )
                 
                 st.plotly_chart(fig, width='stretch')
+                st.caption("*Theoretical plot based on enzyme kinetics equations (Cornish-Bowden, 2012).*")
                 
                 st.markdown(f"""**Results:**
 - **Vmax:** {vmax_eh} µmol/min (y-intercept)
@@ -1156,6 +1182,7 @@ def main():
                 )
                 
                 st.plotly_chart(fig, width='stretch')
+                st.caption("*Simulated using Michaelis-Menten equation: v = Vmax[S]/(Km + [S]).*")
                 
                 # Saturation analysis
                 saturation = (substrate_sim / (sim_km + substrate_sim)) * 100
