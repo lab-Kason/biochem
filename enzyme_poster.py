@@ -442,7 +442,7 @@ def show_references():
     with tab1:
         st.subheader("📄 Key Research Papers")
         
-        st.info("**Note:** All references are formatted in APA 7th edition style. All DOI links have been verified and are functional. Click any DOI link to access the original publication.")
+        st.info("**Note:** All references are formatted in APA 7th edition style. DOI links are provided for journal articles and have been verified as functional. Textbooks typically do not have DOI identifiers.")
         
         st.markdown("""
 #### Enzyme Inhibition Theory & Methods
@@ -453,9 +453,9 @@ def show_references():
 
 3. Segel, I. H. (1993). *Enzyme kinetics: Behavior and analysis of rapid equilibrium and steady-state enzyme systems*. Wiley-Interscience.
 
-4. Cornish-Bowden, A. (2012). *Fundamentals of enzyme kinetics* (4th ed.). Wiley-Blackwell. https://doi.org/10.1002/9783527654970
+4. Cornish-Bowden, A. (2012). *Fundamentals of enzyme kinetics* (4th ed.). Wiley-Blackwell.
 
-5. Morrison, J. F., & Walsh, C. T. (1988). The behavior and significance of slow-binding enzyme inhibitors. *Advances in Enzymology and Related Areas of Molecular Biology*, *61*, 201–301. https://doi.org/10.1002/9780470123072.ch5
+5. Morrison, J. F., & Walsh, C. T. (1988). The behavior and significance of slow-binding enzyme inhibitors. *Advances in Enzymology and Related Areas of Molecular Biology*, *61*, 201–301.
 
 6. DiMasi, J. A., Grabowski, H. G., & Hansen, R. W. (2016). Innovation in the pharmaceutical industry: New estimates of R&D costs. *Journal of Health Economics*, *47*, 20–33. https://doi.org/10.1016/j.jhealeco.2016.01.012
 
@@ -529,23 +529,23 @@ def show_references():
 3. Voet, D., Voet, J. G., & Pratt, C. W. (2016). *Fundamentals of biochemistry: Life at the molecular level* (5th ed.). Wiley.
    - Chapter 12: Enzyme Kinetics, Inhibition, and Control
 
-4. Cornish-Bowden, A. (2012). *Fundamentals of enzyme kinetics* (4th ed.). Wiley-Blackwell. https://doi.org/10.1002/9783527654970
+4. Cornish-Bowden, A. (2012). *Fundamentals of enzyme kinetics* (4th ed.). Wiley-Blackwell.
 
 5. Price, N. C., & Stevens, L. (1999). *Fundamentals of enzymology: The cell and molecular biology of catalytic proteins* (3rd ed.). Oxford University Press.
 
 #### Drug Design & Medicinal Chemistry
 
-6. Silverman, R. B., & Holladay, M. W. (2014). *The organic chemistry of drug design and drug action* (3rd ed.). Academic Press. https://doi.org/10.1016/C2010-0-66661-7
+6. Silverman, R. B., & Holladay, M. W. (2014). *The organic chemistry of drug design and drug action* (3rd ed.). Academic Press.
    - Chapter 4: Enzyme Inhibition and Inactivation
    - Chapter 5: Receptor Binding and Drug Design
 
-7. Copeland, R. A. (2013). *Evaluation of enzyme inhibitors in drug discovery: A guide for medicinal chemists and pharmacologists* (2nd ed.). Wiley-Interscience. https://doi.org/10.1002/9781118540398
+7. Copeland, R. A. (2013). *Evaluation of enzyme inhibitors in drug discovery: A guide for medicinal chemists and pharmacologists* (2nd ed.). Wiley-Interscience.
 
 8. Patrick, G. L. (2017). *An introduction to medicinal chemistry* (6th ed.). Oxford University Press.
    - Chapter 7: Enzymes as Drug Targets
    - Chapter 20: Anticancer Agents
 
-9. Wermuth, C. G., Aldous, D., Raboisson, P., & Rognan, D. (Eds.). (2015). *The practice of medicinal chemistry* (4th ed.). Academic Press. https://doi.org/10.1016/C2012-0-06530-4
+9. Wermuth, C. G., Aldous, D., Raboisson, P., & Rognan, D. (Eds.). (2015). *The practice of medicinal chemistry* (4th ed.). Academic Press.
 
 10. Lemke, T. L., Williams, D. A., Roche, V. F., & Zito, S. W. (2020). *Foye's principles of medicinal chemistry* (8th ed.). Wolters Kluwer.
 
