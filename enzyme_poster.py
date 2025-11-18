@@ -438,56 +438,115 @@ def show_references():
     with tab1:
         st.subheader("📄 Key Research Papers")
         
-        st.markdown("""#### Enzyme Inhibition Mechanisms
-1. **Copeland, R.A.** (2013). "Evaluation of Enzyme Inhibitors in Drug Discovery." 
-   *Methods of Biochemical Analysis*, 46, 1-265. 
-   [DOI: 10.1002/9781118540398](https://doi.org/10.1002/9781118540398)
+        st.markdown("""**All references are formatted in APA 7th edition style.**
 
-2. **Cheng, Y., & Prusoff, W.H.** (1973). "Relationship between the inhibition constant (Ki) and the concentration of inhibitor which causes 50 per cent inhibition (IC50) of an enzymatic reaction." 
-   *Biochemical Pharmacology*, 22(23), 3099-3108.
-   [DOI: 10.1016/0006-2952(73)90196-2](https://doi.org/10.1016/0006-2952(73)90196-2)
+#### Enzyme Inhibition Theory & Methods
 
-3. **Segel, I.H.** (1975). "Enzyme Kinetics: Behavior and Analysis of Rapid Equilibrium and Steady-State Enzyme Systems." 
-   *Wiley-Interscience*, New York.
+1. Copeland, R. A. (2013). Evaluation of enzyme inhibitors in drug discovery: A guide for medicinal chemists and pharmacologists (2nd ed.). *Methods of Biochemical Analysis*, *46*, 1–265. https://doi.org/10.1002/9781118540398
 
-#### Drug Development Case Studies
+2. Cheng, Y., & Prusoff, W. H. (1973). Relationship between the inhibition constant (K1) and the concentration of inhibitor which causes 50 per cent inhibition (I50) of an enzymatic reaction. *Biochemical Pharmacology*, *22*(23), 3099–3108. https://doi.org/10.1016/0006-2952(73)90196-2
 
-4. **Istvan, E.S., & Deisenhofer, J.** (2001). "Structural mechanism for statin inhibition of HMG-CoA reductase." 
-   *Science*, 292(5519), 1160-1164.
-   [DOI: 10.1126/science.1059344](https://doi.org/10.1126/science.1059344)
+3. Segel, I. H. (1993). *Enzyme kinetics: Behavior and analysis of rapid equilibrium and steady-state enzyme systems*. Wiley-Interscience.
 
-5. **Kohl, N.E., et al.** (1988). "Active human immunodeficiency virus protease is required for viral infectivity." 
-   *PNAS*, 85(13), 4686-4690.
-   [DOI: 10.1073/pnas.85.13.4686](https://doi.org/10.1073/pnas.85.13.4686)
+4. Cornish-Bowden, A. (2012). *Fundamentals of enzyme kinetics* (4th ed.). Wiley-Blackwell. https://doi.org/10.1002/9783527654970
 
-6. **Druker, B.J., et al.** (2001). "Efficacy and safety of a specific inhibitor of the BCR-ABL tyrosine kinase in chronic myeloid leukemia." 
-   *New England Journal of Medicine*, 344(14), 1031-1037.
-   [DOI: 10.1056/NEJM200104053441401](https://doi.org/10.1056/NEJM200104053441401)
+5. Morrison, J. F., & Walsh, C. T. (1988). The behavior and significance of slow-binding enzyme inhibitors. *Advances in Enzymology and Related Areas of Molecular Biology*, *61*, 201–301. https://doi.org/10.1002/9780470123072.ch5
+
+#### Statins (HMG-CoA Reductase Inhibitors)
+
+6. Istvan, E. S., & Deisenhofer, J. (2001). Structural mechanism for statin inhibition of HMG-CoA reductase. *Science*, *292*(5519), 1160–1164. https://doi.org/10.1126/science.1059344
+
+7. Endo, A. (2010). A historical perspective on the discovery of statins. *Proceedings of the Japan Academy, Series B*, *86*(5), 484–493. https://doi.org/10.2183/pjab.86.484
+
+8. Heart Protection Study Collaborative Group. (2002). MRC/BHF Heart Protection Study of cholesterol lowering with simvastatin in 20,536 high-risk individuals: A randomised placebo-controlled trial. *The Lancet*, *360*(9326), 7–22. https://doi.org/10.1016/S0140-6736(02)09327-3
+
+9. Ridker, P. M., Danielson, E., Fonseca, F. A., Genest, J., Gotto, A. M., Jr., Kastelein, J. J., Koenig, W., Libby, P., Lorenzatti, A. J., MacFadyen, J. G., Nordestgaard, B. G., Shepherd, J., Willerson, J. T., & Glynn, R. J. (2008). Rosuvastatin to prevent vascular events in men and women with elevated C-reactive protein. *New England Journal of Medicine*, *359*(21), 2195–2207. https://doi.org/10.1056/NEJMoa0807646
+
+#### HIV Protease Inhibitors
+
+10. Kohl, N. E., Emini, E. A., Schleif, W. A., Davis, L. J., Heimbach, J. C., Dixon, R. A., Scolnick, E. M., & Sigal, I. S. (1988). Active human immunodeficiency virus protease is required for viral infectivity. *Proceedings of the National Academy of Sciences*, *85*(13), 4686–4690. https://doi.org/10.1073/pnas.85.13.4686
+
+11. Wlodawer, A., & Vondrasek, J. (1998). Inhibitors of HIV-1 protease: A major success of structure-assisted drug design. *Annual Review of Biophysics and Biomolecular Structure*, *27*, 249–284. https://doi.org/10.1146/annurev.biophys.27.1.249
+
+12. Gulick, R. M., Mellors, J. W., Havlir, D., Eron, J. J., Gonzalez, C., McMahon, D., Richman, D. D., Valentine, F. T., Jonas, L., Meibohm, A., Emini, E. A., & Chodakewitz, J. A. (1997). Treatment with indinavir, zidovudine, and lamivudine in adults with human immunodeficiency virus infection and prior antiretroviral therapy. *New England Journal of Medicine*, *337*(11), 734–739. https://doi.org/10.1056/NEJM199709113371102
+
+13. Flexner, C. (1998). HIV-protease inhibitors. *New England Journal of Medicine*, *338*(18), 1281–1293. https://doi.org/10.1056/NEJM199804303381808
+
+#### ACE Inhibitors
+
+14. Cushman, D. W., & Ondetti, M. A. (1991). History of the design of captopril and related inhibitors of angiotensin converting enzyme. *Hypertension*, *17*(4), 589–592. https://doi.org/10.1161/01.HYP.17.4.589
+
+15. Pfeffer, M. A., Braunwald, E., Moyé, L. A., Basta, L., Brown, E. J., Jr., Cuddy, T. E., Davis, B. R., Geltman, E. M., Goldman, S., Flaker, G. C., Klein, M., Lamas, G. A., Packer, M., Rouleau, J., Rouleau, J. L., Rutherford, J., Wertheimer, J. H., & Hawkins, C. M. (1992). Effect of captopril on mortality and morbidity in patients with left ventricular dysfunction after myocardial infarction: Results of the survival and ventricular enlargement trial. *New England Journal of Medicine*, *327*(10), 669–677. https://doi.org/10.1056/NEJM199209033271001
+
+16. Yusuf, S., Sleight, P., Pogue, J., Bosch, J., Davies, R., & Dagenais, G. (2000). Effects of an angiotensin-converting-enzyme inhibitor, ramipril, on cardiovascular events in high-risk patients. *New England Journal of Medicine*, *342*(3), 145–153. https://doi.org/10.1056/NEJM200001203420301
+
+#### Kinase Inhibitors
+
+17. Druker, B. J., Talpaz, M., Resta, D. J., Peng, B., Buchdunger, E., Ford, J. M., Lydon, N. B., Kantarjian, H., Capdeville, R., Ohno-Jones, S., & Sawyers, C. L. (2001). Efficacy and safety of a specific inhibitor of the BCR-ABL tyrosine kinase in chronic myeloid leukemia. *New England Journal of Medicine*, *344*(14), 1031–1037. https://doi.org/10.1056/NEJM200104053441401
+
+18. Cohen, P. (2002). Protein kinases—the major drug targets of the twenty-first century? *Nature Reviews Drug Discovery*, *1*(4), 309–315. https://doi.org/10.1038/nrd773
+
+19. Deininger, M., Buchdunger, E., & Druker, B. J. (2005). The development of imatinib as a therapeutic agent for chronic myeloid leukemia. *Blood*, *105*(7), 2640–2653. https://doi.org/10.1182/blood-2004-08-3097
+
+20. Hochhaus, A., Larson, R. A., Guilhot, F., Radich, J. P., Branford, S., Hughes, T. P., Baccarani, M., Deininger, M. W., Cervantes, F., Fujihara, S., Ortmann, C. E., Menssen, H. D., Kantarjian, H., O'Brien, S. G., & Druker, B. J. (2017). Long-term outcomes of imatinib treatment for chronic myeloid leukemia. *New England Journal of Medicine*, *376*(10), 917–927. https://doi.org/10.1056/NEJMoa1609324
+
+#### COX-2 Inhibitors
+
+21. Vane, J. R., & Botting, R. M. (1998). Mechanism of action of nonsteroidal anti-inflammatory drugs. *American Journal of Medicine*, *104*(3A), 2S–8S. https://doi.org/10.1016/S0002-9343(97)00203-9
+
+22. Bombardier, C., Laine, L., Reicin, A., Shapiro, D., Burgos-Vargas, R., Davis, B., Day, R., Ferraz, M. B., Hawkey, C. J., Hochberg, M. C., Kvien, T. K., & Schnitzer, T. J. (2000). Comparison of upper gastrointestinal toxicity of rofecoxib and naproxen in patients with rheumatoid arthritis. *New England Journal of Medicine*, *343*(21), 1520–1528. https://doi.org/10.1056/NEJM200011233432103
+
+23. Silverstein, F. E., Faich, G., Goldstein, J. L., Simon, L. S., Pincus, T., Whelton, A., Makuch, R., Eisen, G., Agrawal, N. M., Stenson, W. F., Burr, A. M., Zhao, W. W., Kent, J. D., Lefkowith, J. B., Verburg, K. M., & Geis, G. S. (2000). Gastrointestinal toxicity with celecoxib vs nonsteroidal anti-inflammatory drugs for osteoarthritis and rheumatoid arthritis: The CLASS study. *JAMA*, *284*(10), 1247–1255. https://doi.org/10.1001/jama.284.10.1247
+
+24. FitzGerald, G. A. (2004). Coxibs and cardiovascular disease. *New England Journal of Medicine*, *351*(17), 1709–1711. https://doi.org/10.1056/NEJMp048288
         """)
     
     with tab2:
         st.subheader("📖 Recommended Textbooks")
         
-        st.markdown("""1. **Berg, J.M., Tymoczko, J.L., & Stryer, L.** (2019). 
-   *Biochemistry* (9th ed.). W.H. Freeman and Company.
+        st.markdown("""**All references in APA 7th edition format.**
+
+#### Biochemistry & Enzyme Kinetics
+
+1. Berg, J. M., Tymoczko, J. L., Gatto, G. J., Jr., & Stryer, L. (2019). *Biochemistry* (9th ed.). W. H. Freeman and Company.
    - Chapter 8: Enzymes: Basic Concepts and Kinetics
    - Chapter 9: Catalytic Strategies
+   - Chapter 10: Regulatory Strategies
 
-2. **Nelson, D.L., & Cox, M.M.** (2017). 
-   *Lehninger Principles of Biochemistry* (7th ed.). W.H. Freeman.
+2. Nelson, D. L., & Cox, M. M. (2021). *Lehninger principles of biochemistry* (8th ed.). W. H. Freeman.
    - Chapter 6: Enzymes
+   - Chapter 12: Biosignaling
 
-3. **Silverman, R.B., & Holladay, M.W.** (2014). 
-   *The Organic Chemistry of Drug Design and Drug Action* (3rd ed.). Academic Press.
+3. Voet, D., Voet, J. G., & Pratt, C. W. (2016). *Fundamentals of biochemistry: Life at the molecular level* (5th ed.). Wiley.
+   - Chapter 12: Enzyme Kinetics, Inhibition, and Control
+
+4. Cornish-Bowden, A. (2012). *Fundamentals of enzyme kinetics* (4th ed.). Wiley-Blackwell. https://doi.org/10.1002/9783527654970
+
+5. Price, N. C., & Stevens, L. (1999). *Fundamentals of enzymology: The cell and molecular biology of catalytic proteins* (3rd ed.). Oxford University Press.
+
+#### Drug Design & Medicinal Chemistry
+
+6. Silverman, R. B., & Holladay, M. W. (2014). *The organic chemistry of drug design and drug action* (3rd ed.). Academic Press. https://doi.org/10.1016/C2010-0-66661-7
    - Chapter 4: Enzyme Inhibition and Inactivation
+   - Chapter 5: Receptor Binding and Drug Design
 
-4. **Copeland, R.A.** (2005). 
-   *Evaluation of Enzyme Inhibitors in Drug Discovery: A Guide for Medicinal Chemists and Pharmacologists*. 
-   Wiley-Interscience.
+7. Copeland, R. A. (2013). *Evaluation of enzyme inhibitors in drug discovery: A guide for medicinal chemists and pharmacologists* (2nd ed.). Wiley-Interscience. https://doi.org/10.1002/9781118540398
 
-5. **Wlodawer, A., & Vondrasek, J.** (1998). 
-   *Annual Review of Biophysics and Biomolecular Structure*, 27, 249-284.
-   - "Inhibitors of HIV-1 protease: a major success of structure-assisted drug design"
+8. Patrick, G. L. (2017). *An introduction to medicinal chemistry* (6th ed.). Oxford University Press.
+   - Chapter 7: Enzymes as Drug Targets
+   - Chapter 20: Anticancer Agents
+
+9. Wermuth, C. G., Aldous, D., Raboisson, P., & Rognan, D. (Eds.). (2015). *The practice of medicinal chemistry* (4th ed.). Academic Press. https://doi.org/10.1016/C2012-0-06530-4
+
+10. Lemke, T. L., Williams, D. A., Roche, V. F., & Zito, S. W. (2020). *Foye's principles of medicinal chemistry* (8th ed.). Wolters Kluwer.
+
+#### Pharmacology
+
+11. Brunton, L. L., Hilal-Dandan, R., & Knollmann, B. C. (Eds.). (2018). *Goodman & Gilman's: The pharmacological basis of therapeutics* (13th ed.). McGraw-Hill Education.
+
+12. Katzung, B. G., & Trevor, A. J. (2021). *Basic & clinical pharmacology* (15th ed.). McGraw-Hill Education.
+   - Section II: Autonomic Drugs
+   - Section V: Drugs That Act in the Central Nervous System
         """)
     
     with tab3:
@@ -524,27 +583,46 @@ def show_references():
     with tab4:
         st.subheader("📝 How to Cite This Tool")
         
-        st.markdown("""If you use this interactive educational tool in your work, please cite as:
-        """)
+        st.markdown("""If you use this interactive educational tool in your teaching, research, or publications, 
+please cite it using one of the following formats:""")
         
-        st.code("""Enzyme Inhibitors in Drug Development: An Interactive Educational Tool
-(2025). Created with Streamlit.
-Available at: [Your Deployment URL]
-Accessed: [Date]""", language="text")
+        st.markdown("#### APA 7th Edition (Recommended)")
+        st.code("""Chiu, K. (2025). Enzyme inhibitors in drug development: An interactive educational tool [Interactive web application]. Streamlit. https://lab-kason-biochem.streamlit.app""", language="text")
         
-        st.markdown("**BibTeX Format:**")
-        st.code("""@misc{enzyme_inhibitors_tool_2025,
+        st.markdown("#### MLA 9th Edition")
+        st.code("""Chiu, Kason. "Enzyme Inhibitors in Drug Development: An Interactive Educational Tool." Streamlit, 2025, lab-kason-biochem.streamlit.app. Accessed [Date].""", language="text")
+        
+        st.markdown("#### Chicago 17th Edition")
+        st.code("""Chiu, Kason. 2025. "Enzyme Inhibitors in Drug Development: An Interactive Educational Tool." Interactive web application. Streamlit. https://lab-kason-biochem.streamlit.app.""", language="text")
+        
+        st.markdown("#### BibTeX Format")
+        st.code("""@misc{chiu2025enzyme,
   title={Enzyme Inhibitors in Drug Development: An Interactive Educational Tool},
-  author={[Your Name]},
+  author={Chiu, Kason},
   year={2025},
-  howpublished={\\url{[Your Deployment URL]}},
-  note={Interactive web application built with Streamlit}
+  howpublished={\\url{https://lab-kason-biochem.streamlit.app}},
+  note={Interactive web application built with Streamlit and Python. 
+        Includes IC50/Ki calculators, kinetics simulators, and drug case studies}
 }""", language="bibtex")
         
         st.markdown("---")
-        st.info("""**Disclaimer:** This tool is designed for educational purposes only. 
-All data and calculations should be verified with primary literature sources 
-and are not intended for clinical or commercial drug development decisions.""")
+        
+        st.markdown("#### Additional Information")
+        st.info("""**Version:** 1.0 (November 2025)
+**Platform:** Streamlit 1.51.0
+**Technologies:** Python, NumPy, Pandas, Plotly
+**License:** Educational use permitted with attribution
+**Repository:** https://github.com/lab-Kason/biochem
+        """)
+        
+        st.markdown("---")
+        
+        st.warning("""**Disclaimer:** This tool is designed for educational purposes only. 
+All data, calculations, and clinical information should be verified with primary 
+literature sources and are not intended for clinical or commercial drug development 
+decisions. The case study data presented are approximate values derived from published 
+literature for illustrative purposes. Always consult current medical literature and 
+guidelines for clinical applications.""")
 
 # Case Studies Section
 def show_case_studies():
@@ -566,17 +644,280 @@ def show_case_studies():
             <b>Target:</b> HMG-CoA reductase<br>
             <b>Mechanism:</b> Competitive inhibition<br>
             <b>Disease:</b> Hypercholesterolemia<br>
-            <b>Impact:</b> One of best-selling drugs ever
+            <b>First Approved:</b> 1996 (FDA)<br>
+            <b>Peak Sales:</b> $12.9 billion/year<br>
+            <b>Impact:</b> Best-selling drug of all time
             </div>
             """, unsafe_allow_html=True)
+            
+            st.markdown("""**How It Works:**
+Statins competitively inhibit HMG-CoA reductase, the rate-limiting enzyme in cholesterol 
+biosynthesis. By binding to the active site, they prevent the conversion of HMG-CoA to 
+mevalonate, thereby reducing cholesterol production in the liver.
+
+**Clinical Impact:**
+- Reduces LDL cholesterol by 39-60%
+- Decreases cardiovascular events by 25-35%
+- Prevents ~10,000 deaths annually in the US alone
+
+**Key Studies:** Heart Protection Study (2002), JUPITER Trial (2008)
+            """)
+        
         with col2:
-            # Simple efficacy chart
-            data = {'Year': [1990, 2000, 2010, 2020],
-                   'Cardiac Deaths per 1000': [8.5, 6.2, 4.1, 2.8]}
+            # Efficacy chart
+            data = {'Year': [1990, 1995, 2000, 2005, 2010, 2015, 2020],
+                   'Cardiac Deaths per 100,000': [321, 298, 257, 216, 179, 155, 134]}
             df = pd.DataFrame(data)
-            fig = px.line(df, x='Year', y='Cardiac Deaths per 1000', 
-                         title="Impact on Cardiac Mortality")
+            fig = px.line(df, x='Year', y='Cardiac Deaths per 100,000', 
+                         title="Impact of Statins on Cardiac Mortality (US)",
+                         markers=True)
+            fig.update_layout(height=350)
             st.plotly_chart(fig, width='stretch')
+            
+            # Market comparison
+            statin_data = pd.DataFrame({
+                'Drug': ['Atorvastatin', 'Rosuvastatin', 'Simvastatin', 'Pravastatin'],
+                'LDL Reduction (%)': [39, 45, 35, 28],
+                'Type': ['High Potency', 'High Potency', 'Moderate', 'Moderate']
+            })
+            fig2 = px.bar(statin_data, x='Drug', y='LDL Reduction (%)', 
+                         color='Type', title='Comparative Potency of Statins')
+            fig2.update_layout(height=300)
+            st.plotly_chart(fig2, width='stretch')
+    
+    elif case_study == "HIV Protease Inhibitors":
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            st.markdown("""
+            <div class="drug-card">
+            <h4>💊 Ritonavir, Saquinavir, Indinavir</h4>
+            <b>Target:</b> HIV-1 Protease<br>
+            <b>Mechanism:</b> Competitive inhibition<br>
+            <b>Disease:</b> HIV/AIDS<br>
+            <b>First Approved:</b> 1995 (Saquinavir)<br>
+            <b>Impact:</b> Transformed HIV from fatal to manageable chronic disease
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""**How It Works:**
+HIV protease inhibitors mimic the transition state of the natural peptide substrate, 
+binding tightly to the enzyme's active site. They prevent the cleavage of viral 
+polyproteins, blocking the maturation of infectious viral particles.
+
+**Clinical Impact:**
+- Reduces viral load by >90% when combined with other antiretrovirals
+- Increased life expectancy from ~1 year to near-normal
+- Death rate decreased by 80% after introduction (1996-1998)
+- Part of HAART (Highly Active Antiretroviral Therapy)
+
+**Design Success:** Structure-based drug design using X-ray crystallography
+            """)
+        
+        with col2:
+            # HIV survival timeline
+            survival_data = pd.DataFrame({
+                'Era': ['Pre-1996\n(No Protease Inhibitors)', '1996-2000\n(HAART Era Begins)', 
+                       '2000-2010\n(Optimized Therapy)', '2010-Present\n(Modern Therapy)'],
+                'Median Survival (years)': [1.5, 8, 20, 35],
+                'Order': [1, 2, 3, 4]
+            })
+            fig = px.bar(survival_data, x='Era', y='Median Survival (years)',
+                        title='HIV Survival: Impact of Protease Inhibitors',
+                        color='Median Survival (years)',
+                        color_continuous_scale='Viridis')
+            fig.update_layout(height=350, showlegend=False)
+            st.plotly_chart(fig, width='stretch')
+            
+            # Drug potency comparison
+            st.markdown("**Protease Inhibitor Potency (IC50 values):**")
+            pi_data = pd.DataFrame({
+                'Drug': ['Ritonavir', 'Saquinavir', 'Indinavir', 'Lopinavir'],
+                'IC50 (nM)': [15, 0.4, 0.56, 1.3]
+            })
+            fig2 = px.bar(pi_data, x='Drug', y='IC50 (nM)', 
+                         title='Lower IC50 = More Potent',
+                         log_y=True)
+            fig2.update_layout(height=300)
+            st.plotly_chart(fig2, width='stretch')
+    
+    elif case_study == "ACE Inhibitors (Blood Pressure)":
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            st.markdown("""
+            <div class="drug-card">
+            <h4>💊 Lisinopril, Enalapril, Captopril</h4>
+            <b>Target:</b> Angiotensin-Converting Enzyme (ACE)<br>
+            <b>Mechanism:</b> Competitive inhibition<br>
+            <b>Disease:</b> Hypertension, Heart Failure<br>
+            <b>First Approved:</b> 1981 (Captopril)<br>
+            <b>Impact:</b> One of most prescribed drug classes worldwide
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""**How It Works:**
+ACE inhibitors block the conversion of angiotensin I to angiotensin II, a potent 
+vasoconstrictor. They contain a zinc-binding group that coordinates with the zinc ion 
+in the ACE active site, preventing substrate binding.
+
+**Clinical Impact:**
+- Reduces blood pressure by 10-15 mmHg (systolic)
+- Decreases heart failure mortality by 20-30%
+- Protects kidney function in diabetic patients
+- Used by >40 million Americans annually
+
+**Design Inspiration:** Based on snake venom peptides (Bothrops jararaca)
+            """)
+        
+        with col2:
+            # Blood pressure reduction
+            bp_data = pd.DataFrame({
+                'Weeks': [0, 2, 4, 8, 12],
+                'Systolic BP (mmHg)': [160, 152, 145, 138, 135],
+                'Diastolic BP (mmHg)': [98, 94, 90, 86, 84]
+            })
+            fig = go.Figure()
+            fig.add_trace(go.Scatter(x=bp_data['Weeks'], y=bp_data['Systolic BP (mmHg)'],
+                                   name='Systolic', mode='lines+markers', line=dict(color='red')))
+            fig.add_trace(go.Scatter(x=bp_data['Weeks'], y=bp_data['Diastolic BP (mmHg)'],
+                                   name='Diastolic', mode='lines+markers', line=dict(color='blue')))
+            fig.update_layout(title='Typical Blood Pressure Response to ACE Inhibitors',
+                            xaxis_title='Treatment Duration (weeks)',
+                            yaxis_title='Blood Pressure (mmHg)',
+                            height=350)
+            st.plotly_chart(fig, width='stretch')
+            
+            # Cardiovascular outcomes
+            outcome_data = pd.DataFrame({
+                'Outcome': ['Heart Attack', 'Stroke', 'Heart Failure', 'Death'],
+                'Risk Reduction (%)': [20, 25, 30, 23]
+            })
+            fig2 = px.bar(outcome_data, x='Outcome', y='Risk Reduction (%)',
+                         title='Cardiovascular Risk Reduction with ACE Inhibitors',
+                         color='Risk Reduction (%)', color_continuous_scale='Greens')
+            fig2.update_layout(height=300, showlegend=False)
+            st.plotly_chart(fig2, width='stretch')
+    
+    elif case_study == "Kinase Inhibitors (Cancer)":
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            st.markdown("""
+            <div class="drug-card">
+            <h4>💊 Imatinib (Gleevec), Gefitinib, Erlotinib</h4>
+            <b>Target:</b> Tyrosine Kinases (BCR-ABL, EGFR)<br>
+            <b>Mechanism:</b> Competitive inhibition (ATP-binding site)<br>
+            <b>Disease:</b> Chronic Myeloid Leukemia, Lung Cancer<br>
+            <b>First Approved:</b> 2001 (Imatinib)<br>
+            <b>Impact:</b> Paradigm shift toward targeted cancer therapy
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""**How It Works:**
+Kinase inhibitors compete with ATP for the enzyme's binding site, preventing 
+phosphorylation of target proteins. This blocks signaling pathways that drive 
+cancer cell proliferation and survival.
+
+**Clinical Impact - Imatinib for CML:**
+- 10-year survival rate: 83% (vs. 20% before 2001)
+- Complete cytogenetic response: 87% of patients
+- Transformed CML from terminal to chronic condition
+- Led to development of 50+ kinase inhibitor drugs
+
+**Precision Medicine:** First major success of targeted molecular therapy
+            """)
+        
+        with col2:
+            # CML survival comparison
+            cml_data = pd.DataFrame({
+                'Treatment': ['Pre-Imatinib\n(1990s)', 'Imatinib\n(2001+)', 'Second-gen\n(2006+)'],
+                '5-Year Survival (%)': [30, 89, 93],
+                'Order': [1, 2, 3]
+            })
+            fig = px.bar(cml_data, x='Treatment', y='5-Year Survival (%)',
+                        title='CML Survival: The Imatinib Revolution',
+                        color='5-Year Survival (%)',
+                        color_continuous_scale='Blues')
+            fig.update_layout(height=350, showlegend=False)
+            st.plotly_chart(fig, width='stretch')
+            
+            # Kinase inhibitor selectivity
+            st.markdown("**Selectivity Profile:**")
+            selectivity_data = pd.DataFrame({
+                'Target': ['BCR-ABL', 'PDGFR', 'c-KIT', 'Off-targets'],
+                'IC50 (nM)': [260, 380, 410, 5000],
+                'Type': ['Primary', 'Secondary', 'Secondary', 'Non-target']
+            })
+            fig2 = px.bar(selectivity_data, x='Target', y='IC50 (nM)',
+                         title='Imatinib Selectivity (Lower = More Potent)',
+                         color='Type', log_y=True)
+            fig2.update_layout(height=300)
+            st.plotly_chart(fig2, width='stretch')
+    
+    else:  # COX-2 Inhibitors (Pain)
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            st.markdown("""
+            <div class="drug-card">
+            <h4>💊 Celecoxib (Celebrex), Rofecoxib (Vioxx)</h4>
+            <b>Target:</b> Cyclooxygenase-2 (COX-2)<br>
+            <b>Mechanism:</b> Selective competitive inhibition<br>
+            <b>Disease:</b> Pain, Inflammation, Arthritis<br>
+            <b>First Approved:</b> 1998 (Celecoxib)<br>
+            <b>Impact:</b> Safer alternative to traditional NSAIDs
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""**How It Works:**
+COX-2 inhibitors selectively block cyclooxygenase-2, the enzyme induced during 
+inflammation, while sparing COX-1 (important for stomach protection). This provides 
+pain relief with reduced gastrointestinal side effects.
+
+**Clinical Impact:**
+- Similar pain relief to traditional NSAIDs
+- 50-60% reduction in serious GI complications
+- Reduced gastric ulcers: 0.4% vs. 1.4% (traditional NSAIDs)
+- Used by millions for arthritis management
+
+**Selectivity:** COX-2/COX-1 selectivity ratio >100:1
+
+**Note:** Rofecoxib withdrawn in 2004 due to cardiovascular risks
+            """)
+        
+        with col2:
+            # Selectivity comparison
+            cox_data = pd.DataFrame({
+                'Drug': ['Celecoxib', 'Traditional NSAIDs', 'Aspirin'],
+                'COX-2 Inhibition': [90, 75, 65],
+                'COX-1 Inhibition': [10, 80, 95]
+            })
+            fig = go.Figure()
+            fig.add_trace(go.Bar(name='COX-2 Inhibition', x=cox_data['Drug'], 
+                               y=cox_data['COX-2 Inhibition'], marker_color='green'))
+            fig.add_trace(go.Bar(name='COX-1 Inhibition', x=cox_data['Drug'], 
+                               y=cox_data['COX-1 Inhibition'], marker_color='red'))
+            fig.update_layout(title='COX-2 Selectivity: Reducing GI Side Effects',
+                            yaxis_title='% Inhibition',
+                            barmode='group',
+                            height=350)
+            st.plotly_chart(fig, width='stretch')
+            
+            # Side effect comparison
+            side_effects = pd.DataFrame({
+                'Side Effect': ['GI Ulcers', 'GI Bleeding', 'Dyspepsia'],
+                'Traditional NSAIDs (%)': [1.4, 1.0, 15],
+                'COX-2 Inhibitors (%)': [0.4, 0.3, 8]
+            })
+            fig2 = go.Figure()
+            fig2.add_trace(go.Bar(name='Traditional NSAIDs', 
+                                x=side_effects['Side Effect'], 
+                                y=side_effects['Traditional NSAIDs (%)']))
+            fig2.add_trace(go.Bar(name='COX-2 Inhibitors', 
+                                x=side_effects['Side Effect'], 
+                                y=side_effects['COX-2 Inhibitors (%)']))
+            fig2.update_layout(title='Gastrointestinal Side Effects Comparison',
+                             yaxis_title='Incidence (%)',
+                             barmode='group',
+                             height=300)
+            st.plotly_chart(fig2, width='stretch')
 
 # Main application flow
 def main():
@@ -590,7 +931,252 @@ def main():
         show_case_studies()
     elif selected_section == "Kinetics":
         st.markdown('<div class="section-header">📊 Interactive Kinetics Explorer</div>', unsafe_allow_html=True)
-        # Add kinetic explorer content
+        
+        st.write("""Explore enzyme kinetics through interactive plots and simulations. 
+        Visualize Michaelis-Menten and Lineweaver-Burk plots under different inhibition conditions.""")
+        
+        # Create tabs for different kinetic analyses
+        tab1, tab2, tab3 = st.tabs(["Lineweaver-Burk Plot", "Eadie-Hofstee Plot", "Kinetic Simulator"])
+        
+        with tab1:
+            st.subheader("Lineweaver-Burk (Double Reciprocal) Plot")
+            
+            col1, col2 = st.columns([1, 2])
+            
+            with col1:
+                st.markdown("#### Parameters")
+                
+                vmax_lb = st.slider("Vmax (µmol/min)", 10, 200, 100, 5, key="vmax_lb")
+                km_lb = st.slider("Km (mM)", 0.5, 20.0, 5.0, 0.5, key="km_lb")
+                
+                show_inhibitor_lb = st.checkbox("Add Inhibitor", value=True, key="show_inh_lb")
+                
+                if show_inhibitor_lb:
+                    inh_type_lb = st.selectbox(
+                        "Inhibition Type",
+                        ["Competitive", "Non-competitive", "Uncompetitive"],
+                        key="inh_type_lb"
+                    )
+                    
+                    ki_lb = st.slider("Ki (mM)", 0.5, 10.0, 2.0, 0.5, key="ki_lb")
+                    inhibitor_conc = st.slider("[I] Inhibitor Concentration (mM)", 
+                                              0.0, 10.0, 3.0, 0.5, key="inh_conc_lb")
+                
+                st.markdown("""**Equation:**""")
+                st.latex(r"\frac{1}{v} = \frac{K_m}{V_{max}} \cdot \frac{1}{[S]} + \frac{1}{V_{max}}")
+                
+                st.info("""**Interpretation:**
+- **Y-intercept:** 1/Vmax
+- **X-intercept:** -1/Km
+- **Slope:** Km/Vmax
+                """)
+            
+            with col2:
+                # Generate substrate concentrations
+                substrate_conc = np.array([0.5, 1, 2, 4, 8, 16, 32])  # mM
+                
+                # Calculate velocities (no inhibitor)
+                velocity_no_inh = vmax_lb * substrate_conc / (km_lb + substrate_conc)
+                
+                # Lineweaver-Burk transformation
+                reciprocal_s = 1 / substrate_conc
+                reciprocal_v_no_inh = 1 / velocity_no_inh
+                
+                fig = go.Figure()
+                
+                # Plot without inhibitor
+                fig.add_trace(go.Scatter(
+                    x=reciprocal_s, 
+                    y=reciprocal_v_no_inh,
+                    mode='lines+markers',
+                    name='No Inhibitor',
+                    line=dict(color='blue', width=2),
+                    marker=dict(size=8)
+                ))
+                
+                # Add inhibitor conditions
+                if show_inhibitor_lb:
+                    alpha = 1 + (inhibitor_conc / ki_lb)
+                    
+                    if inh_type_lb == "Competitive":
+                        velocity_inh = vmax_lb * substrate_conc / (km_lb * alpha + substrate_conc)
+                    elif inh_type_lb == "Non-competitive":
+                        velocity_inh = (vmax_lb / alpha) * substrate_conc / (km_lb + substrate_conc)
+                    else:  # Uncompetitive
+                        velocity_inh = (vmax_lb / alpha) * substrate_conc / (km_lb / alpha + substrate_conc)
+                    
+                    reciprocal_v_inh = 1 / velocity_inh
+                    
+                    fig.add_trace(go.Scatter(
+                        x=reciprocal_s, 
+                        y=reciprocal_v_inh,
+                        mode='lines+markers',
+                        name=f'With {inh_type_lb} Inhibitor',
+                        line=dict(color='red', width=2, dash='dash'),
+                        marker=dict(size=8)
+                    ))
+                
+                fig.update_layout(
+                    title='Lineweaver-Burk Plot',
+                    xaxis_title='1/[S] (1/mM)',
+                    yaxis_title='1/v (min/µmol)',
+                    height=500,
+                    hovermode='closest'
+                )
+                
+                # Add grid
+                fig.update_xaxes(showgrid=True, gridwidth=1, gridcolor='lightgray')
+                fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgray')
+                
+                st.plotly_chart(fig, width='stretch')
+                
+                # Display calculated parameters
+                st.markdown("**Calculated Parameters:**")
+                col_a, col_b = st.columns(2)
+                with col_a:
+                    st.metric("Vmax", f"{vmax_lb} µmol/min")
+                    st.metric("Km", f"{km_lb} mM")
+                with col_b:
+                    st.metric("Vmax/Km (Efficiency)", f"{vmax_lb/km_lb:.2f}")
+                    if show_inhibitor_lb:
+                        st.metric("Ki", f"{ki_lb} mM")
+        
+        with tab2:
+            st.subheader("Eadie-Hofstee Plot")
+            
+            col1, col2 = st.columns([1, 2])
+            
+            with col1:
+                st.markdown("#### Parameters")
+                
+                vmax_eh = st.slider("Vmax (µmol/min)", 10, 200, 100, 5, key="vmax_eh")
+                km_eh = st.slider("Km (mM)", 0.5, 20.0, 5.0, 0.5, key="km_eh")
+                
+                st.markdown("**Equation:**")
+                st.latex(r"v = -K_m \cdot \frac{v}{[S]} + V_{max}")
+                
+                st.info("""**Interpretation:**
+- **Y-intercept:** Vmax
+- **Slope:** -Km
+- More uniform error distribution than Lineweaver-Burk
+                """)
+            
+            with col2:
+                # Generate data
+                substrate_conc_eh = np.linspace(0.5, 30, 50)
+                velocity_eh = vmax_eh * substrate_conc_eh / (km_eh + substrate_conc_eh)
+                v_over_s = velocity_eh / substrate_conc_eh
+                
+                fig = go.Figure()
+                fig.add_trace(go.Scatter(
+                    x=v_over_s,
+                    y=velocity_eh,
+                    mode='lines+markers',
+                    name='Eadie-Hofstee',
+                    line=dict(color='purple', width=2),
+                    marker=dict(size=6)
+                ))
+                
+                fig.update_layout(
+                    title='Eadie-Hofstee Plot',
+                    xaxis_title='v/[S] (µmol/min/mM)',
+                    yaxis_title='v (µmol/min)',
+                    height=500
+                )
+                
+                st.plotly_chart(fig, width='stretch')
+                
+                st.markdown(f"""**Results:**
+- **Vmax:** {vmax_eh} µmol/min (y-intercept)
+- **Km:** {km_eh} mM (negative of slope)
+- **Catalytic efficiency (kcat/Km):** {vmax_eh/km_eh:.2f}
+                """)
+        
+        with tab3:
+            st.subheader("Enzyme Kinetics Simulator")
+            
+            st.write("""Simulate enzyme reactions and observe how different parameters affect reaction velocity.""")
+            
+            col1, col2 = st.columns([1, 1])
+            
+            with col1:
+                st.markdown("#### Enzyme Properties")
+                
+                sim_vmax = st.number_input("Vmax (µmol/min)", min_value=1.0, value=100.0, step=5.0)
+                sim_km = st.number_input("Km (mM)", min_value=0.1, value=5.0, step=0.5)
+                enzyme_conc = st.number_input("[E] Enzyme Concentration (µM)", 
+                                             min_value=0.1, value=1.0, step=0.1)
+                
+                st.markdown("#### Reaction Conditions")
+                substrate_range = st.slider("Substrate Concentration Range (mM)", 
+                                           1.0, 100.0, 50.0, 1.0)
+                temperature = st.slider("Temperature (°C)", 20, 40, 37, 1)
+                
+                # Calculate kcat
+                kcat = sim_vmax / enzyme_conc if enzyme_conc > 0 else 0
+                
+                st.markdown(f"""**Calculated Constants:**
+- **kcat (turnover number):** {kcat:.1f} min⁻¹
+- **kcat/Km (specificity constant):** {kcat/sim_km:.2f} min⁻¹mM⁻¹
+- **Diffusion limit:** ~10⁸ to 10⁹ M⁻¹s⁻¹
+                """)
+            
+            with col2:
+                # Generate simulation data
+                substrate_sim = np.linspace(0.1, substrate_range, 200)
+                velocity_sim = sim_vmax * substrate_sim / (sim_km + substrate_sim)
+                
+                # Create figure with multiple views
+                fig = go.Figure()
+                
+                # Michaelis-Menten curve
+                fig.add_trace(go.Scatter(
+                    x=substrate_sim,
+                    y=velocity_sim,
+                    mode='lines',
+                    name='Reaction Velocity',
+                    line=dict(color='green', width=3)
+                ))
+                
+                # Add Vmax line
+                fig.add_hline(y=sim_vmax, line_dash="dash", line_color="red",
+                            annotation_text=f"Vmax = {sim_vmax}")
+                
+                # Add Km indicator
+                v_at_km = sim_vmax / 2
+                fig.add_hline(y=v_at_km, line_dash="dot", line_color="orange",
+                            annotation_text=f"Vmax/2 at Km = {sim_km}")
+                fig.add_vline(x=sim_km, line_dash="dot", line_color="orange")
+                
+                fig.update_layout(
+                    title='Michaelis-Menten Kinetics Simulation',
+                    xaxis_title='[S] Substrate Concentration (mM)',
+                    yaxis_title='v Reaction Velocity (µmol/min)',
+                    height=400
+                )
+                
+                st.plotly_chart(fig, width='stretch')
+                
+                # Saturation analysis
+                saturation = (substrate_sim / (sim_km + substrate_sim)) * 100
+                
+                fig2 = go.Figure()
+                fig2.add_trace(go.Scatter(
+                    x=substrate_sim,
+                    y=saturation,
+                    mode='lines',
+                    fill='tonexty',
+                    line=dict(color='blue', width=2)
+                ))
+                
+                fig2.update_layout(
+                    title='Enzyme Saturation',
+                    xaxis_title='[S] Substrate Concentration (mM)',
+                    yaxis_title='Enzyme Saturation (%)',
+                    height=300
+                )
+                
+                st.plotly_chart(fig2, width='stretch')
     elif selected_section == "Calculator":
         show_calculator()
     elif selected_section == "References":
