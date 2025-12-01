@@ -196,8 +196,10 @@ def show_mechanisms():
         elif mechanism == "Non-competitive Inhibition":
             alpha = 2
             velocity_inhibitor = (vmax / alpha) * substrate / (km + substrate)
-        else:
-            velocity_inhibitor = vmax * substrate / (km * 1.5 + substrate * 1.2)
+        else:  # Mixed Inhibition
+            alpha = 2.0  # Effect on Km (competitive component)
+            alpha_prime = 1.5  # Effect on Vmax (non-competitive component)
+            velocity_inhibitor = (vmax / alpha_prime) * substrate / ((km * alpha / alpha_prime) + substrate)
         
         fig = go.Figure()
         fig.add_trace(go.Scatter(x=substrate, y=velocity_no_inhibitor, 
@@ -271,12 +273,19 @@ def show_calculator():
                 
                 # Find IC50 (50% activity)
                 if len(act_sorted) > 1 and act_sorted.max() > 50 and act_sorted.min() < 50:
-                    ic50 = np.interp(50, act_sorted[::-1], conc_sorted[::-1])
+                    # Check if activities decrease with concentration (typical inhibition)
+                    if act_sorted[0] > act_sorted[-1]:
+                        # Activities decrease: reverse for interpolation
+                        ic50 = np.interp(50, act_sorted[::-1], conc_sorted[::-1])
+                    else:
+                        # Activities increase: interpolate directly
+                        ic50 = np.interp(50, act_sorted, conc_sorted)
                     
                     st.success(f"### IC50 = {ic50:.2f} µM")
                     
                     # Generate smooth curve
-                    conc_smooth = np.linspace(0.01, max(concentrations)*1.2, 100)
+                    max_conc = max(max(concentrations), 1.0)  # Ensure minimum range
+                    conc_smooth = np.linspace(0.01, max_conc*1.2, 100)
                     # Hill equation with calculated IC50
                     hill_slope = 1.0
                     top = max(activities)
@@ -370,10 +379,11 @@ The inhibitor binds to a site different from the active site.
                 """)
             
             else:  # Uncompetitive
-                ki = ic50_input * (1 + km_input / substrate_conc)
+                # For uncompetitive inhibition: Ki' = IC50 / (1 + [S]/Km)
+                ki = ic50_input / (1 + substrate_conc / km_input)
                 st.success(f"### Ki = {ki:.3f} µM")
                 
-                st.latex(r"K_i = IC_{50} \times \left(1 + \frac{K_m}{[S]}\right)")
+                st.latex(r"K_i = \frac{IC_{50}}{1 + \frac{[S]}{K_m}}")
                 
                 st.info(f"""**Uncompetitive Inhibition**
 - IC50 = {ic50_input} µM
@@ -381,7 +391,8 @@ The inhibitor binds to a site different from the active site.
 - [S] = {substrate_conc} µM
 - **Ki = {ki:.3f} µM**
 
-The inhibitor only binds to the enzyme-substrate complex.
+The inhibitor only binds to the enzyme-substrate complex (ES).
+Ki represents the dissociation constant for the ESI complex.
                 """)
     
     with tab3:
@@ -402,6 +413,10 @@ The inhibitor only binds to the enzyme-substrate complex.
         
         with col2:
             st.markdown("#### Generated Curve")
+            
+            # Validation
+            if bottom_activity > top_activity:
+                st.warning("⚠️ Bottom activity is greater than top activity. Curve will be inverted.")
             
             # Generate dose-response curve
             concentrations_curve = np.logspace(-3, np.log10(conc_range_max), 100)
@@ -1146,13 +1161,16 @@ def main():
                 temperature = st.slider("Temperature (°C)", 20, 40, 37, 1)
                 
                 # Calculate kcat
-                kcat = sim_vmax / enzyme_conc if enzyme_conc > 0 else 0
-                
-                st.markdown(f"""**Calculated Constants:**
+                if enzyme_conc > 0:
+                    kcat = sim_vmax / enzyme_conc
+                    kcat_km = kcat / sim_km
+                    st.markdown(f"""**Calculated Constants:**
 - **kcat (turnover number):** {kcat:.1f} min⁻¹
-- **kcat/Km (specificity constant):** {kcat/sim_km:.2f} min⁻¹mM⁻¹
+- **kcat/Km (specificity constant):** {kcat_km:.2f} min⁻¹mM⁻¹
 - **Diffusion limit:** ~10⁸ to 10⁹ M⁻¹s⁻¹
-                """)
+                    """)
+                else:
+                    st.warning("⚠️ Enzyme concentration must be > 0 to calculate kcat")
             
             with col2:
                 # Generate simulation data
