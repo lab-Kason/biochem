@@ -266,6 +266,49 @@ def show_mechanisms():
             - Effect can be overcome by increasing substrate concentration
             - **Example**: Statins (HMG-CoA reductase inhibitors)
             """)
+            
+            # Create schematic diagram for competitive inhibition
+            fig_mech = go.Figure()
+            
+            # Enzyme (rectangle)
+            fig_mech.add_shape(type="rect", x0=0.5, y0=0.3, x1=1.5, y1=0.7,
+                              line=dict(color="RoyalBlue", width=3), fillcolor="lightblue")
+            # Active site (small notch)
+            fig_mech.add_shape(type="rect", x0=0.45, y0=0.45, x1=0.55, y1=0.55,
+                              line=dict(color="red", width=2), fillcolor="lightyellow")
+            
+            # Substrate (circle) - fits active site
+            fig_mech.add_shape(type="circle", x0=0.15, y0=0.45, x1=0.35, y1=0.65,
+                              line=dict(color="green", width=2), fillcolor="lightgreen")
+            
+            # Inhibitor (triangle-like using path) - similar shape to substrate
+            fig_mech.add_shape(type="circle", x0=0.15, y0=0.15, x1=0.35, y1=0.35,
+                              line=dict(color="red", width=2), fillcolor="lightcoral")
+            
+            # Arrow showing competition
+            fig_mech.add_annotation(x=0.25, y=0.55, ax=0.5, ay=0.5, 
+                                   xref="x", yref="y", axref="x", ayref="y",
+                                   showarrow=True, arrowhead=2, arrowsize=1, arrowwidth=2, arrowcolor="green")
+            fig_mech.add_annotation(x=0.25, y=0.25, ax=0.5, ay=0.5,
+                                   xref="x", yref="y", axref="x", ayref="y",
+                                   showarrow=True, arrowhead=2, arrowsize=1, arrowwidth=2, arrowcolor="red")
+            
+            # Labels
+            fig_mech.add_annotation(x=1.0, y=0.85, text="<b>Enzyme</b>", showarrow=False, font=dict(size=12))
+            fig_mech.add_annotation(x=0.25, y=0.7, text="Substrate", showarrow=False, font=dict(size=10, color="green"))
+            fig_mech.add_annotation(x=0.25, y=0.1, text="Inhibitor", showarrow=False, font=dict(size=10, color="red"))
+            fig_mech.add_annotation(x=0.5, y=0.5, text="Active\nSite", showarrow=False, font=dict(size=8))
+            
+            fig_mech.update_layout(
+                showlegend=False,
+                height=200,
+                margin=dict(l=10, r=10, t=10, b=10),
+                xaxis=dict(range=[0, 2], showgrid=False, showticklabels=False, zeroline=False),
+                yaxis=dict(range=[0, 1], showgrid=False, showticklabels=False, zeroline=False),
+                plot_bgcolor='white'
+            )
+            st.plotly_chart(fig_mech, use_container_width=True)
+            
         elif mechanism == "Non-competitive Inhibition":
             st.write("""
             - Binds to enzyme at site other than active site
@@ -273,18 +316,157 @@ def show_mechanisms():
             - Cannot be overcome by substrate concentration
             - **Example**: Heavy metal ions
             """)
+            
+            # Create schematic diagram for non-competitive inhibition
+            fig_mech = go.Figure()
+            
+            # Enzyme (rectangle)
+            fig_mech.add_shape(type="rect", x0=0.5, y0=0.3, x1=1.5, y1=0.7,
+                              line=dict(color="RoyalBlue", width=3), fillcolor="lightblue")
+            # Active site
+            fig_mech.add_shape(type="rect", x0=0.45, y0=0.45, x1=0.55, y1=0.55,
+                              line=dict(color="green", width=2), fillcolor="lightyellow")
+            # Allosteric site
+            fig_mech.add_shape(type="rect", x0=1.45, y0=0.45, x1=1.55, y1=0.55,
+                              line=dict(color="red", width=2), fillcolor="lightpink")
+            
+            # Substrate (circle) - at active site
+            fig_mech.add_shape(type="circle", x0=0.15, y0=0.45, x1=0.35, y1=0.65,
+                              line=dict(color="green", width=2), fillcolor="lightgreen")
+            
+            # Inhibitor (different shape) - at allosteric site
+            fig_mech.add_shape(type="rect", x0=1.65, y0=0.4, x1=1.85, y1=0.6,
+                              line=dict(color="red", width=2), fillcolor="lightcoral")
+            
+            # Arrows
+            fig_mech.add_annotation(x=0.25, y=0.55, ax=0.5, ay=0.5,
+                                   xref="x", yref="y", axref="x", ayref="y",
+                                   showarrow=True, arrowhead=2, arrowsize=1, arrowwidth=2, arrowcolor="green")
+            fig_mech.add_annotation(x=1.75, y=0.5, ax=1.5, ay=0.5,
+                                   xref="x", yref="y", axref="x", ayref="y",
+                                   showarrow=True, arrowhead=2, arrowsize=1, arrowwidth=2, arrowcolor="red")
+            
+            # Labels
+            fig_mech.add_annotation(x=1.0, y=0.85, text="<b>Enzyme</b>", showarrow=False, font=dict(size=12))
+            fig_mech.add_annotation(x=0.25, y=0.7, text="Substrate", showarrow=False, font=dict(size=10, color="green"))
+            fig_mech.add_annotation(x=1.75, y=0.65, text="Inhibitor", showarrow=False, font=dict(size=10, color="red"))
+            fig_mech.add_annotation(x=0.5, y=0.5, text="Active", showarrow=False, font=dict(size=7))
+            fig_mech.add_annotation(x=1.5, y=0.5, text="Allosteric", showarrow=False, font=dict(size=7))
+            
+            fig_mech.update_layout(
+                showlegend=False,
+                height=200,
+                margin=dict(l=10, r=10, t=10, b=10),
+                xaxis=dict(range=[0, 2], showgrid=False, showticklabels=False, zeroline=False),
+                yaxis=dict(range=[0, 1], showgrid=False, showticklabels=False, zeroline=False),
+                plot_bgcolor='white'
+            )
+            st.plotly_chart(fig_mech, use_container_width=True)
+            
         elif mechanism == "Uncompetitive Inhibition":
             st.write("""
             - Binds only to enzyme-substrate complex
             - Common in multi-substrate reactions
             - **Example**: Lithium for certain enzymes
             """)
-        else:
+            
+            # Create schematic diagram for uncompetitive inhibition
+            fig_mech = go.Figure()
+            
+            # Enzyme (rectangle)
+            fig_mech.add_shape(type="rect", x0=0.5, y0=0.3, x1=1.5, y1=0.7,
+                              line=dict(color="RoyalBlue", width=3), fillcolor="lightblue")
+            # Active site with substrate already bound
+            fig_mech.add_shape(type="rect", x0=0.45, y0=0.45, x1=0.55, y1=0.55,
+                              line=dict(color="green", width=2), fillcolor="lightgreen")
+            
+            # Substrate (circle) - BOUND to active site
+            fig_mech.add_shape(type="circle", x0=0.43, y0=0.43, x1=0.57, y1=0.57,
+                              line=dict(color="green", width=2), fillcolor="lightgreen")
+            
+            # New binding site created by ES complex
+            fig_mech.add_shape(type="rect", x0=1.45, y0=0.35, x1=1.55, y1=0.45,
+                              line=dict(color="orange", width=2), fillcolor="lightyellow")
+            
+            # Inhibitor - binds to ES complex only
+            fig_mech.add_shape(type="circle", x0=1.65, y0=0.35, x1=1.85, y1=0.55,
+                              line=dict(color="red", width=2), fillcolor="lightcoral")
+            
+            # Arrow showing inhibitor binding to ES complex
+            fig_mech.add_annotation(x=1.75, y=0.45, ax=1.5, ay=0.4,
+                                   xref="x", yref="y", axref="x", ayref="y",
+                                   showarrow=True, arrowhead=2, arrowsize=1, arrowwidth=2, arrowcolor="red")
+            
+            # Labels
+            fig_mech.add_annotation(x=1.0, y=0.85, text="<b>Enzyme-Substrate Complex</b>", showarrow=False, font=dict(size=12))
+            fig_mech.add_annotation(x=0.5, y=0.2, text="ES Complex", showarrow=False, font=dict(size=10, color="green"))
+            fig_mech.add_annotation(x=1.75, y=0.6, text="Inhibitor", showarrow=False, font=dict(size=10, color="red"))
+            fig_mech.add_annotation(x=1.5, y=0.3, text="New\nSite", showarrow=False, font=dict(size=7))
+            
+            fig_mech.update_layout(
+                showlegend=False,
+                height=200,
+                margin=dict(l=10, r=10, t=10, b=10),
+                xaxis=dict(range=[0, 2], showgrid=False, showticklabels=False, zeroline=False),
+                yaxis=dict(range=[0, 1], showgrid=False, showticklabels=False, zeroline=False),
+                plot_bgcolor='white'
+            )
+            st.plotly_chart(fig_mech, use_container_width=True)
+            
+        else:  # Mixed Inhibition
             st.write("""
             - Combination of competitive and non-competitive features
             - Binds to both enzyme and enzyme-substrate complex
             - **Example**: Many kinase inhibitors
             """)
+            
+            # Create schematic diagram for mixed inhibition
+            fig_mech = go.Figure()
+            
+            # Two scenarios side by side
+            # Left: Inhibitor binding to free enzyme
+            fig_mech.add_shape(type="rect", x0=0.3, y0=0.55, x1=0.7, y1=0.85,
+                              line=dict(color="RoyalBlue", width=2), fillcolor="lightblue")
+            fig_mech.add_shape(type="rect", x0=0.25, y0=0.65, x1=0.32, y1=0.75,
+                              line=dict(color="red", width=2), fillcolor="lightpink")
+            fig_mech.add_shape(type="circle", x0=0.05, y0=0.65, x1=0.2, y1=0.8,
+                              line=dict(color="red", width=2), fillcolor="lightcoral")
+            fig_mech.add_annotation(x=0.125, y=0.725, ax=0.28, ay=0.7,
+                                   xref="x", yref="y", axref="x", ayref="y",
+                                   showarrow=True, arrowhead=2, arrowsize=1, arrowwidth=1.5, arrowcolor="red")
+            
+            # Right: Inhibitor binding to ES complex
+            fig_mech.add_shape(type="rect", x0=1.3, y0=0.55, x1=1.7, y1=0.85,
+                              line=dict(color="RoyalBlue", width=2), fillcolor="lightblue")
+            fig_mech.add_shape(type="circle", x0=1.27, y0=0.67, x1=1.37, y1=0.77,
+                              line=dict(color="green", width=2), fillcolor="lightgreen")
+            fig_mech.add_shape(type="rect", x0=1.68, y0=0.65, x1=1.75, y1=0.75,
+                              line=dict(color="red", width=2), fillcolor="lightpink")
+            fig_mech.add_shape(type="circle", x0=1.8, y0=0.65, x1=1.95, y1=0.8,
+                              line=dict(color="red", width=2), fillcolor="lightcoral")
+            fig_mech.add_annotation(x=1.875, y=0.725, ax=1.72, ay=0.7,
+                                   xref="x", yref="y", axref="x", ayref="y",
+                                   showarrow=True, arrowhead=2, arrowsize=1, arrowwidth=1.5, arrowcolor="red")
+            
+            # Labels
+            fig_mech.add_annotation(x=0.5, y=0.95, text="<b>E + I → EI</b>", showarrow=False, font=dict(size=11))
+            fig_mech.add_annotation(x=1.5, y=0.95, text="<b>ES + I → ESI</b>", showarrow=False, font=dict(size=11))
+            fig_mech.add_annotation(x=0.125, y=0.87, text="Inhibitor", showarrow=False, font=dict(size=8, color="red"))
+            fig_mech.add_annotation(x=1.32, y=0.87, text="Substrate", showarrow=False, font=dict(size=8, color="green"))
+            fig_mech.add_annotation(x=1.875, y=0.87, text="Inhibitor", showarrow=False, font=dict(size=8, color="red"))
+            fig_mech.add_annotation(x=1.0, y=0.4, text="<b>Inhibitor binds to both free enzyme AND ES complex</b>", 
+                                   showarrow=False, font=dict(size=10))
+            
+            fig_mech.update_layout(
+                showlegend=False,
+                height=250,
+                margin=dict(l=10, r=10, t=10, b=10),
+                xaxis=dict(range=[0, 2], showgrid=False, showticklabels=False, zeroline=False),
+                yaxis=dict(range=[0.3, 1], showgrid=False, showticklabels=False, zeroline=False),
+                plot_bgcolor='white'
+            )
+            st.plotly_chart(fig_mech, use_container_width=True)
+            
         st.markdown("</div>", unsafe_allow_html=True)
     
     with col2:
