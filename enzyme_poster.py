@@ -4,7 +4,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 import numpy as np
 from streamlit_option_menu import option_menu
-import base64
 
 # Page configuration
 st.set_page_config(
@@ -1074,8 +1073,6 @@ def main():
                 if np.any(substrate_conc == 0) or np.any(velocity_no_inh == 0):
                     st.error("⚠️ Cannot create Lineweaver-Burk plot: division by zero detected")
                 else:
-                    reciprocal_s = 1 / substrate_conc
-                    reciprocal_v_no_inh = 1 / velocity_no_inh
                     reciprocal_s = 1 / substrate_conc
                     reciprocal_v_no_inh = 1 / velocity_no_inh
                     
