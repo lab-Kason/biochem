@@ -186,6 +186,13 @@ def show_mechanisms():
         km = st.slider("Km value (affinity)", 0.1, 10.0, 1.0, 0.1, key="km_slider")
         vmax = st.slider("Vmax (maximum velocity)", 1, 100, 50, 1, key="vmax_slider")
         
+        # Add inhibitor strength control
+        show_inhibitor = st.checkbox("Show Inhibitor Effect", value=True, key="show_inh_mech")
+        if show_inhibitor:
+            inhibitor_strength = st.slider("Inhibitor Strength (alpha)", 1.0, 5.0, 2.0, 0.1, 
+                                          key="alpha_slider",
+                                          help="Higher values = stronger inhibition")
+        
         # Generate kinetic curves
         substrate = np.linspace(0.1, 20, 100)
         velocity_no_inhibitor = vmax * substrate / (km + substrate)
@@ -196,6 +203,9 @@ def show_mechanisms():
         elif mechanism == "Non-competitive Inhibition":
             alpha = 2
             velocity_inhibitor = (vmax / alpha) * substrate / (km + substrate)
+        elif mechanism == "Uncompetitive Inhibition":
+            alpha = 2  # Inhibition factor
+            velocity_inhibitor = (vmax / alpha) * substrate / (km / alpha + substrate)
         else:  # Mixed Inhibition
             alpha = 2.0  # Effect on Km (competitive component)
             alpha_prime = 1.5  # Effect on Vmax (non-competitive component)
@@ -254,14 +264,20 @@ def show_calculator():
             st.markdown("#### Results")
             
             if len(concentrations) >= 3:
+                # Validate input data
+                conc_array = np.array(concentrations)
+                act_array = np.array(activities)
+                
+                # Check for duplicate concentrations
+                unique_conc = np.unique(conc_array)
+                if len(unique_conc) < len(conc_array):
+                    st.warning("⚠️ Warning: Duplicate concentration values detected. This may affect curve fitting accuracy.")
+                
                 # Fit dose-response curve (Hill equation)
                 # y = Bottom + (Top - Bottom) / (1 + (IC50/x)^HillSlope)
                 # Simplified: assume Hill slope = 1
                 
                 # Calculate IC50 using interpolation
-                conc_array = np.array(concentrations)
-                act_array = np.array(activities)
-                
                 # Sort by concentration
                 sorted_indices = np.argsort(conc_array)
                 conc_sorted = conc_array[sorted_indices]
@@ -327,8 +343,24 @@ def show_calculator():
   - Moderate: 1-10 µM
   - Weak: > 10 µM
                     """)
+                    
+                    # Export data option
+                    results_df = pd.DataFrame({
+                        'Concentration_uM': conc_sorted,
+                        'Activity_percent': act_sorted,
+                        'IC50_uM': [ic50] * len(conc_sorted)
+                    })
+                    csv = results_df.to_csv(index=False)
+                    st.download_button(
+                        label="📅 Download Results as CSV",
+                        data=csv,
+                        file_name="ic50_results.csv",
+                        mime="text/csv"
+                    )
                 else:
-                    st.warning("Not enough data points crossing 50% activity to calculate IC50")
+                    st.warning("⚠️ **Cannot calculate IC50:** Data must cross the 50% activity threshold. "
+                             f"Current range: {act_sorted.min():.1f}% to {act_sorted.max():.1f}%. "
+                             "Please adjust your data points to include values both above and below 50%.")
     
     with tab2:
         st.subheader("Ki Calculator (Inhibition Constant)")
@@ -350,7 +382,8 @@ def show_calculator():
             ic50_input = st.number_input("IC50 (µM)", min_value=0.01, value=5.0, step=0.1,
                                         help="From IC50 assay")
             substrate_conc = st.number_input("[S] Substrate Concentration (µM)", 
-                                           min_value=0.0, value=10.0, step=1.0)
+                                           min_value=0.01, value=10.0, step=1.0,
+                                           help="Actual substrate concentration used in the assay")
             km_input = st.number_input("Km (µM)", min_value=0.01, value=5.0, step=0.1,
                                       help="Michaelis constant")
         
