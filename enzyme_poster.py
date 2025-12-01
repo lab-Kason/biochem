@@ -292,8 +292,10 @@ def show_mechanisms():
         # Interactive kinetics plot
         st.subheader("📈 Kinetic Effects")
         
-        km = st.slider("Km value (affinity)", 0.1, 10.0, 1.0, 0.1, key="km_slider")
-        vmax = st.slider("Vmax (maximum velocity)", 1, 100, 50, 1, key="vmax_slider")
+        km = st.slider("Km value (affinity)", 0.1, 10.0, 1.0, 0.1, key="km_slider",
+                      help="Michaelis constant: substrate concentration at half Vmax (lower = higher affinity)")
+        vmax = st.slider("Vmax (maximum velocity)", 1, 100, 50, 1, key="vmax_slider",
+                        help="Maximum reaction velocity when enzyme is fully saturated with substrate")
         
         # Add inhibitor strength control
         show_inhibitor = st.checkbox("Show Inhibitor Effect", value=True, key="show_inh_mech")
@@ -427,7 +429,8 @@ def show_calculator():
             st.markdown("#### Input Parameters")
             
             st.markdown("#### Inhibitor Concentrations & Activities")
-            num_points = st.slider("Number of data points", 3, 10, 5)
+            num_points = st.slider("Number of data points", 3, 10, 5,
+                                  help="More points give better curve fitting (5-7 recommended)")
             
             concentrations = []
             activities = []
@@ -563,12 +566,12 @@ def show_calculator():
             )
             
             ic50_input = st.number_input("IC50 (µM)", min_value=0.01, value=5.0, step=0.1,
-                                        help="From IC50 assay")
+                                        help="Concentration causing 50% inhibition (from your IC50 assay)")
             substrate_conc = st.number_input("[S] Substrate Concentration (µM)", 
                                            min_value=0.01, value=10.0, step=1.0,
-                                           help="Actual substrate concentration used in the assay")
+                                           help="Substrate concentration used in your IC50 assay")
             km_input = st.number_input("Km (µM)", min_value=0.01, value=5.0, step=0.1,
-                                      help="Michaelis constant")
+                                      help="Michaelis constant: substrate concentration at half Vmax")
         
         with col2:
             st.markdown("#### Results")
@@ -628,13 +631,17 @@ Ki represents the dissociation constant for the ESI complex.
         with col1:
             st.markdown("#### Curve Parameters")
             
-            top_activity = st.slider("Top Activity (%)", 0, 100, 100, 1)
-            bottom_activity = st.slider("Bottom Activity (%)", 0, 100, 0, 1)
-            ic50_curve = st.number_input("IC50 (µM)", min_value=0.01, value=1.0, step=0.1, key="ic50_curve")
+            top_activity = st.slider("Top Activity (%)", 0, 100, 100, 1,
+                                    help="Activity with no inhibitor (usually 100%)")
+            bottom_activity = st.slider("Bottom Activity (%)", 0, 100, 0, 1,
+                                       help="Activity at maximum inhibition (usually 0%)")
+            ic50_curve = st.number_input("IC50 (µM)", min_value=0.01, value=1.0, step=0.1, key="ic50_curve",
+                                        help="Desired IC50 value for the theoretical curve")
             hill_slope = st.slider("Hill Slope", 0.5, 4.0, 1.0, 0.1,
-                                 help="Steepness of the curve")
+                                 help="Steepness of curve (1.0 = standard, >1 = cooperative binding, <1 = negative cooperativity)")
             
-            conc_range_max = st.number_input("Max Concentration (µM)", min_value=0.1, value=100.0, step=1.0)
+            conc_range_max = st.number_input("Max Concentration (µM)", min_value=0.1, value=100.0, step=1.0,
+                                            help="Maximum concentration to display on X-axis")
         
         with col2:
             st.markdown("#### Generated Curve")
@@ -1426,8 +1433,10 @@ def main():
             with col1:
                 st.markdown("#### Parameters")
                 
-                vmax_lb = st.slider("Vmax (µmol/min)", 10, 200, 100, 5, key="vmax_lb")
-                km_lb = st.slider("Km (mM)", 0.5, 20.0, 5.0, 0.5, key="km_lb")
+                vmax_lb = st.slider("Vmax (µmol/min)", 10, 200, 100, 5, key="vmax_lb",
+                                   help="Maximum reaction velocity")
+                km_lb = st.slider("Km (mM)", 0.5, 20.0, 5.0, 0.5, key="km_lb",
+                                 help="Substrate concentration at half Vmax")
                 
                 show_inhibitor_lb = st.checkbox("Add Inhibitor", value=True, key="show_inh_lb")
                 
@@ -1438,9 +1447,11 @@ def main():
                         key="inh_type_lb"
                     )
                     
-                    ki_lb = st.slider("Ki (mM)", 0.5, 10.0, 2.0, 0.5, key="ki_lb")
+                    ki_lb = st.slider("Ki (mM)", 0.5, 10.0, 2.0, 0.5, key="ki_lb",
+                                     help="Inhibitor dissociation constant (lower = stronger binding)")
                     inhibitor_conc = st.slider("[I] Inhibitor Concentration (mM)", 
-                                              0.0, 10.0, 3.0, 0.5, key="inh_conc_lb")
+                                              0.0, 10.0, 3.0, 0.5, key="inh_conc_lb",
+                                              help="Concentration of inhibitor added to reaction")
                 
                 st.markdown("""**Equation:**""")
                 st.latex(r"\frac{1}{v} = \frac{K_m}{V_{max}} \cdot \frac{1}{[S]} + \frac{1}{V_{max}}")
@@ -1534,8 +1545,10 @@ def main():
             with col1:
                 st.markdown("#### Parameters")
                 
-                vmax_eh = st.slider("Vmax (µmol/min)", 10, 200, 100, 5, key="vmax_eh")
-                km_eh = st.slider("Km (mM)", 0.5, 20.0, 5.0, 0.5, key="km_eh")
+                vmax_eh = st.slider("Vmax (µmol/min)", 10, 200, 100, 5, key="vmax_eh",
+                                   help="Maximum reaction velocity")
+                km_eh = st.slider("Km (mM)", 0.5, 20.0, 5.0, 0.5, key="km_eh",
+                                 help="Substrate concentration at half Vmax")
                 
                 st.markdown("**Equation:**")
                 st.latex(r"v = -K_m \cdot \frac{v}{[S]} + V_{max}")
@@ -1588,14 +1601,18 @@ def main():
             with col1:
                 st.markdown("#### Enzyme Properties")
                 
-                sim_vmax = st.number_input("Vmax (µmol/min)", min_value=1.0, value=100.0, step=5.0)
-                sim_km = st.number_input("Km (mM)", min_value=0.1, value=5.0, step=0.5)
+                sim_vmax = st.number_input("Vmax (µmol/min)", min_value=1.0, value=100.0, step=5.0,
+                                          help="Maximum velocity when enzyme is saturated")
+                sim_km = st.number_input("Km (mM)", min_value=0.1, value=5.0, step=0.5,
+                                        help="Substrate concentration giving half-maximal velocity")
                 enzyme_conc = st.number_input("[E] Enzyme Concentration (µM)", 
-                                             min_value=0.1, value=1.0, step=0.1)
+                                             min_value=0.1, value=1.0, step=0.1,
+                                             help="Total enzyme concentration in the reaction")
                 
                 st.markdown("#### Reaction Conditions")
                 substrate_range = st.slider("Substrate Concentration Range (mM)", 
-                                           1.0, 100.0, 50.0, 1.0)
+                                           1.0, 100.0, 50.0, 1.0,
+                                           help="Maximum substrate concentration to plot")
                 temperature = st.slider("Temperature (°C)", 20, 40, 37, 1,
                                       help="For reference only - not used in calculation")
                 
