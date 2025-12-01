@@ -233,10 +233,6 @@ def show_calculator():
         with col1:
             st.markdown("#### Input Parameters")
             
-            # Activity measurements
-            v0 = st.number_input("Initial Velocity (v₀)", min_value=0.0, value=100.0, step=1.0, 
-                               help="Enzyme velocity without inhibitor")
-            
             st.markdown("#### Inhibitor Concentrations & Activities")
             num_points = st.slider("Number of data points", 3, 10, 5)
             
@@ -288,9 +284,20 @@ def show_calculator():
                     conc_smooth = np.linspace(0.01, max_conc*1.2, 100)
                     # Hill equation with calculated IC50
                     hill_slope = 1.0
-                    top = max(activities)
-                    bottom = min(activities)
-                    act_smooth = bottom + (top - bottom) / (1 + (conc_smooth/ic50)**hill_slope)
+                    
+                    # Determine top and bottom based on actual data pattern
+                    if act_sorted[0] > act_sorted[-1]:
+                        # Activities decrease with concentration (typical inhibition)
+                        top = act_sorted[0]
+                        bottom = act_sorted[-1]
+                        # Hill equation for inhibition: activity decreases
+                        act_smooth = bottom + (top - bottom) / (1 + (conc_smooth/ic50)**hill_slope)
+                    else:
+                        # Activities increase with concentration (atypical)
+                        top = act_sorted[-1]
+                        bottom = act_sorted[0]
+                        # Inverse Hill equation
+                        act_smooth = bottom + (top - bottom) / (1 + (ic50/conc_smooth)**hill_slope)
                     
                     # Plot
                     fig = go.Figure()
@@ -331,6 +338,8 @@ def show_calculator():
         
         with col1:
             st.markdown("#### Input Parameters")
+            
+            st.info("💡 **Important:** Ensure IC50, [S], and Km are all in the same units (µM).")
             
             inhibition_type = st.selectbox(
                 "Inhibition Type",
@@ -425,10 +434,13 @@ Ki represents the dissociation constant for the ESI complex.
             response = bottom_activity + (top_activity - bottom_activity) / \
                       (1 + (concentrations_curve / ic50_curve)**hill_slope)
             
+            # Calculate actual IC50 activity level (midpoint)
+            ic50_activity_level = (top_activity + bottom_activity) / 2
+            
             fig = go.Figure()
             fig.add_trace(go.Scatter(x=concentrations_curve, y=response, mode='lines',
                                    line=dict(color='purple', width=3)))
-            fig.add_hline(y=50, line_dash="dash", line_color="green",
+            fig.add_hline(y=ic50_activity_level, line_dash="dash", line_color="green",
                         annotation_text=f"IC50 = {ic50_curve} µM")
             fig.add_vline(x=ic50_curve, line_dash="dash", line_color="green")
             
@@ -1024,69 +1036,75 @@ def main():
                 # Calculate velocities (no inhibitor)
                 velocity_no_inh = vmax_lb * substrate_conc / (km_lb + substrate_conc)
                 
-                # Lineweaver-Burk transformation
-                reciprocal_s = 1 / substrate_conc
-                reciprocal_v_no_inh = 1 / velocity_no_inh
-                
-                fig = go.Figure()
-                
-                # Plot without inhibitor
-                fig.add_trace(go.Scatter(
-                    x=reciprocal_s, 
-                    y=reciprocal_v_no_inh,
-                    mode='lines+markers',
-                    name='No Inhibitor',
-                    line=dict(color='blue', width=2),
-                    marker=dict(size=8)
-                ))
-                
-                # Add inhibitor conditions
-                if show_inhibitor_lb:
-                    alpha = 1 + (inhibitor_conc / ki_lb)
+                # Lineweaver-Burk transformation (avoid division by zero)
+                # Filter out any zero values
+                if np.any(substrate_conc == 0) or np.any(velocity_no_inh == 0):
+                    st.error("⚠️ Cannot create Lineweaver-Burk plot: division by zero detected")
+                else:
+                    reciprocal_s = 1 / substrate_conc
+                    reciprocal_v_no_inh = 1 / velocity_no_inh
+                    reciprocal_s = 1 / substrate_conc
+                    reciprocal_v_no_inh = 1 / velocity_no_inh
                     
-                    if inh_type_lb == "Competitive":
-                        velocity_inh = vmax_lb * substrate_conc / (km_lb * alpha + substrate_conc)
-                    elif inh_type_lb == "Non-competitive":
-                        velocity_inh = (vmax_lb / alpha) * substrate_conc / (km_lb + substrate_conc)
-                    else:  # Uncompetitive
-                        velocity_inh = (vmax_lb / alpha) * substrate_conc / (km_lb / alpha + substrate_conc)
+                    fig = go.Figure()
                     
-                    reciprocal_v_inh = 1 / velocity_inh
-                    
+                    # Plot without inhibitor
                     fig.add_trace(go.Scatter(
                         x=reciprocal_s, 
-                        y=reciprocal_v_inh,
+                        y=reciprocal_v_no_inh,
                         mode='lines+markers',
-                        name=f'With {inh_type_lb} Inhibitor',
-                        line=dict(color='red', width=2, dash='dash'),
+                        name='No Inhibitor',
+                        line=dict(color='blue', width=2),
                         marker=dict(size=8)
                     ))
-                
-                fig.update_layout(
-                    title='Lineweaver-Burk Plot',
-                    xaxis_title='1/[S] (1/mM)',
-                    yaxis_title='1/v (min/µmol)',
-                    height=500,
-                    hovermode='closest'
-                )
-                
-                # Add grid
-                fig.update_xaxes(showgrid=True, gridwidth=1, gridcolor='lightgray')
-                fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgray')
-                
-                st.plotly_chart(fig, width='stretch')
-                st.caption("*Theoretical simulation based on Michaelis-Menten enzyme kinetics equations (Segel, 1993).*")
-                
-                # Display calculated parameters
-                st.markdown("**Calculated Parameters:**")
-                col_a, col_b = st.columns(2)
-                with col_a:
-                    st.metric("Vmax", f"{vmax_lb} µmol/min")
-                    st.metric("Km", f"{km_lb} mM")
-                with col_b:
-                    st.metric("Vmax/Km (Efficiency)", f"{vmax_lb/km_lb:.2f}")
+                    
+                    # Add inhibitor conditions
                     if show_inhibitor_lb:
-                        st.metric("Ki", f"{ki_lb} mM")
+                        alpha = 1 + (inhibitor_conc / ki_lb)
+                        
+                        if inh_type_lb == "Competitive":
+                            velocity_inh = vmax_lb * substrate_conc / (km_lb * alpha + substrate_conc)
+                        elif inh_type_lb == "Non-competitive":
+                            velocity_inh = (vmax_lb / alpha) * substrate_conc / (km_lb + substrate_conc)
+                        else:  # Uncompetitive
+                            velocity_inh = (vmax_lb / alpha) * substrate_conc / (km_lb / alpha + substrate_conc)
+                        
+                        reciprocal_v_inh = 1 / velocity_inh
+                        
+                        fig.add_trace(go.Scatter(
+                            x=reciprocal_s, 
+                            y=reciprocal_v_inh,
+                            mode='lines+markers',
+                            name=f'With {inh_type_lb} Inhibitor',
+                            line=dict(color='red', width=2, dash='dash'),
+                            marker=dict(size=8)
+                        ))
+                    
+                    fig.update_layout(
+                        title='Lineweaver-Burk Plot',
+                        xaxis_title='1/[S] (1/mM)',
+                        yaxis_title='1/v (min/µmol)',
+                        height=500,
+                        hovermode='closest'
+                    )
+                    
+                    # Add grid
+                    fig.update_xaxes(showgrid=True, gridwidth=1, gridcolor='lightgray')
+                    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='lightgray')
+                    
+                    st.plotly_chart(fig, width='stretch')
+                    st.caption("*Theoretical simulation based on Michaelis-Menten enzyme kinetics equations (Segel, 1993).*")
+                    
+                    # Display calculated parameters
+                    st.markdown("**Calculated Parameters:**")
+                    col_a, col_b = st.columns(2)
+                    with col_a:
+                        st.metric("Vmax", f"{vmax_lb} µmol/min")
+                        st.metric("Km", f"{km_lb} mM")
+                    with col_b:
+                        st.metric("Vmax/Km (Efficiency)", f"{vmax_lb/km_lb:.2f}")
+                        if show_inhibitor_lb:
+                            st.metric("Ki", f"{ki_lb} mM")
         
         with tab2:
             st.subheader("Eadie-Hofstee Plot")
@@ -1158,7 +1176,8 @@ def main():
                 st.markdown("#### Reaction Conditions")
                 substrate_range = st.slider("Substrate Concentration Range (mM)", 
                                            1.0, 100.0, 50.0, 1.0)
-                temperature = st.slider("Temperature (°C)", 20, 40, 37, 1)
+                temperature = st.slider("Temperature (°C)", 20, 40, 37, 1,
+                                      help="For reference only - not used in calculation")
                 
                 # Calculate kcat
                 if enzyme_conc > 0:
