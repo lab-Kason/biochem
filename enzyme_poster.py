@@ -604,11 +604,11 @@ The inhibitor binds to a site different from the active site.
                 """)
             
             else:  # Uncompetitive
-                # For uncompetitive inhibition: Ki' = IC50 / (1 + [S]/Km)
-                ki = ic50_input / (1 + substrate_conc / km_input)
+                # For uncompetitive inhibition: Ki = IC50 / (1 + Km/[S])
+                ki = ic50_input / (1 + km_input / substrate_conc)
                 st.success(f"### Ki = {ki:.3f} µM")
                 
-                st.latex(r"K_i = \frac{IC_{50}}{1 + \frac{[S]}{K_m}}")
+                st.latex(r"K_i = \frac{IC_{50}}{1 + \frac{K_m}{[S]}}")
                 
                 st.info(f"""**Uncompetitive Inhibition**
 - IC50 = {ic50_input} µM
