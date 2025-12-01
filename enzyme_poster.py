@@ -74,6 +74,67 @@ def create_header():
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         st.markdown('<div class="main-header">🧬 Enzyme Inhibitors in Drug Development</div>', unsafe_allow_html=True)
+        st.markdown('<p style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 1rem;">An Interactive Educational Platform for Understanding Drug Development</p>', unsafe_allow_html=True)
+        
+        # Complete Application Guide
+        with st.expander("🎯 **START HERE: Complete User Guide**", expanded=False):
+            st.markdown("""
+            ### Welcome! 👋
+            
+            This interactive platform helps you understand enzyme inhibitors in drug development.
+            Perfect for students, researchers, and anyone interested in biochemistry and pharmacology.
+            
+            ---
+            
+            ### 📋 Six Interactive Sections:
+            
+            **1. 🏠 Overview**
+            - Statistics on enzyme inhibitor drugs
+            - Market impact and therapeutic applications
+            - *Best for: Understanding the big picture*
+            
+            **2. ⚙️ Mechanisms**
+            - Interactive simulator for 4 inhibition types
+            - Real-time kinetic curve visualization
+            - Adjustable parameters (Km, Vmax, inhibitor strength)
+            - *Best for: Learning how inhibitors work*
+            
+            **3. 📚 Case Studies**
+            - 5 blockbuster drugs (Statins, HIV protease, ACE, Kinase, COX-2)
+            - Clinical trial data with interactive charts
+            - *Best for: Real-world applications*
+            
+            **4. 📊 Kinetics**
+            - Lineweaver-Burk plots
+            - Eadie-Hofstee transformation
+            - Michaelis-Menten simulator
+            - *Best for: Advanced kinetics analysis*
+            
+            **5. 🧮 Calculator**
+            - IC50 calculator (with CSV export)
+            - Ki calculator (Cheng-Prusoff equations)
+            - Dose-response curve generator
+            - *Best for: Analyzing your experimental data*
+            
+            **6. 📖 References**
+            - 26 peer-reviewed papers
+            - 12 textbooks
+            - Online databases and resources
+            - *Best for: Citations and further reading*
+            
+            ---
+            
+            ### 💡 Quick Start Tips:
+            
+            - **Beginners:** Start with Overview → Mechanisms → Case Studies
+            - **Students with data:** Go to Calculator to analyze results
+            - **In-depth learners:** Work through all sections sequentially
+            - **Each section has its own guide** - Look for "📖 How to Use" expandable boxes
+            
+            **All tools are interactive - adjust sliders to see immediate results!**
+            
+            *Select a section from the menu below to begin ⬇️*
+            """)
         
         # Navigation
         selected = option_menu(
@@ -95,6 +156,23 @@ def create_header():
 # Overview Section
 def show_overview():
     st.markdown('<div class="section-header">📊 Executive Summary</div>', unsafe_allow_html=True)
+    
+    # User Guide
+    with st.expander("📖 How to Use This Section", expanded=False):
+        st.markdown("""
+        **Overview Section Guide:**
+        
+        This section provides key statistics about enzyme inhibitors in modern medicine.
+        
+        **What you'll see:**
+        - 📊 **Success statistics** - How many FDA drugs target enzymes
+        - 🎯 **Market data** - Financial impact of enzyme inhibitor drugs
+        - 📈 **Interactive bar chart** - Visual breakdown of therapeutic applications
+        
+        **Simply scroll down to explore the statistics and visualizations.**
+        
+        All data is referenced from peer-reviewed publications (see References section).
+        """)
     
     col1, col2 = st.columns([2, 1])
     
@@ -134,6 +212,38 @@ def show_overview():
 # Interactive Mechanisms Section
 def show_mechanisms():
     st.markdown('<div class="section-header">🔬 Inhibition Mechanisms</div>', unsafe_allow_html=True)
+    
+    # User Guide for Mechanisms
+    with st.expander("📖 How to Use This Interactive Simulator", expanded=False):
+        st.markdown("""
+        **Interactive Enzyme Inhibition Simulator**
+        
+        **Step-by-Step Guide:**
+        1. **Select inhibition type** from dropdown (left panel)
+        2. **Read the mechanism description** to understand how it works
+        3. **Adjust Km slider** (0.1-10.0) - substrate binding affinity
+        4. **Adjust Vmax slider** (1-100) - maximum reaction velocity
+        5. **Toggle "Show Inhibitor Effect"** checkbox to compare curves
+        6. **Use Inhibitor Strength (α) slider** (1.0-5.0) to see dose-dependent effects
+        
+        **Understanding the Parameters:**
+        - **Km:** Lower values = enzyme has higher affinity for substrate
+        - **Vmax:** Higher values = enzyme can work faster
+        - **α (alpha):** Inhibitor strength factor (higher = stronger inhibition)
+        
+        **Interpreting the Plot:**
+        - **Blue curve:** Normal enzyme activity (no inhibitor)
+        - **Red dashed curve:** Activity with inhibitor present
+        - Watch how different mechanisms affect curve shape!
+        
+        **What to Observe:**
+        - **Competitive:** Can't reach same Vmax at low [S], but can at high [S]
+        - **Non-competitive:** Vmax reduced, but Km appears unchanged
+        - **Uncompetitive:** Both Vmax and apparent Km reduced
+        - **Mixed:** Combination of competitive and non-competitive effects
+        
+        *Try different combinations to see how each parameter affects enzyme kinetics!*
+        """)
     
     col1, col2 = st.columns([1, 2])
     
@@ -227,6 +337,80 @@ def show_mechanisms():
 # IC50/Ki Calculator Section
 def show_calculator():
     st.markdown('<div class="section-header">🧮 IC50 & Ki Calculator</div>', unsafe_allow_html=True)
+    
+    # User Guide for Calculator
+    with st.expander("📖 How to Use the Calculator Tools", expanded=False):
+        st.markdown("""
+        **Three Powerful Calculation Tools - Choose a Tab:**
+        
+        ---
+        
+        ### **Tab 1: IC50 Calculator** 🧪
+        
+        **Purpose:** Calculate IC50 from your experimental data
+        
+        **Step-by-Step:**
+        1. Select number of data points (3-10 recommended, 5 is good start)
+        2. Enter your **inhibitor concentrations** (μM) in left column
+        3. Enter corresponding **activity percentages** (0-100%) in right column
+        4. IC50 is automatically calculated and displayed with a dose-response curve
+        5. Click **"Download Results as CSV"** to export data
+        
+        **Tips:**
+        - Your data must cross 50% activity for calculation to work
+        - Use log-spaced concentrations for better curve fitting (e.g., 0.1, 1, 10, 100)
+        - Duplicate concentrations will trigger a warning
+        - Lower IC50 = more potent inhibitor
+        
+        **Interpreting Results:**
+        - Very potent: < 0.1 μM
+        - Potent: 0.1-1 μM
+        - Moderate: 1-10 μM
+        - Weak: > 10 μM
+        
+        ---
+        
+        ### **Tab 2: Ki Calculator** ⚖️
+        
+        **Purpose:** Convert IC50 to Ki (inhibition constant) using Cheng-Prusoff equations
+        
+        **Step-by-Step:**
+        1. Select your **inhibition type** (Competitive, Non-competitive, or Uncompetitive)
+        2. Enter your **IC50 value** (μM) from experiments
+        3. Enter **substrate concentration [S]** (μM) used in assay
+        4. Enter **Km value** (μM) for your enzyme
+        5. Ki is automatically calculated with the appropriate formula
+        
+        **Formulas Used:**
+        - Competitive: Ki = IC50 / (1 + [S]/Km)
+        - Non-competitive: Ki = IC50
+        - Uncompetitive: Ki = IC50 / (1 + Km/[S])
+        
+        **Important:** Units must be consistent (all μM or all nM)
+        
+        ---
+        
+        ### **Tab 3: Dose-Response Curve Generator** 📈
+        
+        **Purpose:** Generate theoretical dose-response curves for presentations or teaching
+        
+        **Step-by-Step:**
+        1. Set **Top Activity** (usually 100% for no inhibitor)
+        2. Set **Bottom Activity** (usually 0% for complete inhibition)
+        3. Enter desired **IC50 value** (μM)
+        4. Adjust **Hill Slope** (1.0 is standard, higher = steeper curve)
+        5. Set **Max Concentration** range for X-axis
+        6. View generated curve instantly
+        
+        **Uses:**
+        - Creating example curves for presentations
+        - Understanding Hill equation behavior
+        - Comparing different IC50 values visually
+        
+        ---
+        
+        **All calculators provide instant results as you adjust parameters!**
+        """)
     
     st.write("""Calculate inhibition constants and understand drug potency metrics.""")
     
@@ -493,6 +677,73 @@ Ki represents the dissociation constant for the ESI complex.
 def show_references():
     st.markdown('<div class="section-header">📚 References & Resources</div>', unsafe_allow_html=True)
     
+    # User Guide for References
+    with st.expander("📖 How to Use This Reference Library", expanded=False):
+        st.markdown("""
+        **Comprehensive Scientific References**
+        
+        All data, equations, and claims in this application are supported by peer-reviewed scientific literature.
+        
+        **What's included in each tab:**
+        
+        ---
+        
+        **Tab 1: Key Papers** 📄
+        - **26+ peer-reviewed publications** from top journals
+        - All citations in **APA 7th edition format**
+        - **DOI links** for direct access to papers
+        - Organized by topic:
+          - Enzyme inhibition theory
+          - Statins and cholesterol drugs
+          - HIV protease inhibitors
+          - ACE inhibitors
+          - Kinase inhibitors
+          - COX-2 inhibitors
+        
+        **How to use:**
+        - Click DOI links to access full papers (may require institutional access)
+        - Copy citations for your own reports or publications
+        - All references are authoritative sources from journals like NEJM, Nature, Blood, JAMA
+        
+        ---
+        
+        **Tab 2: Textbooks** 📚
+        - **12 recommended textbooks** for deeper learning
+        - Classic biochemistry references (Berg, Lehninger, Voet)
+        - Specialized enzyme kinetics texts (Cornish-Bowden)
+        - Medicinal chemistry and drug design books
+        - Pharmacology references (Goodman & Gilman)
+        
+        **Includes specific chapter recommendations** for relevant topics
+        
+        ---
+        
+        **Tab 3: Online Resources** 🌐
+        - **Free databases:**
+          - PubChem (chemical structures)
+          - DrugBank (drug information)
+          - BRENDA (enzyme data)
+          - ChEMBL (bioactivity data)
+          - PDB (protein structures)
+        - **Educational resources:**
+          - Khan Academy tutorials
+          - NCBI Bookshelf (free textbooks)
+        - **Professional organizations**
+        
+        **All resources are free to access!**
+        
+        ---
+        
+        **Tab 4: Citation** 📝
+        - How to cite this educational tool
+        - GitHub repository link
+        - License information
+        
+        ---
+        
+        **Note:** All references have been verified for accuracy and accessibility. DOI links are functional as of December 2025.
+        """)
+    
     st.write("""This educational tool is based on established principles in biochemistry and pharmacology.""")
     
     # Create tabs for different reference categories
@@ -695,6 +946,64 @@ guidelines for clinical applications.""")
 # Case Studies Section
 def show_case_studies():
     st.markdown('<div class="section-header">💊 Successful Drug Case Studies</div>', unsafe_allow_html=True)
+    
+    # User Guide for Case Studies
+    with st.expander("📖 How to Explore Case Studies", expanded=False):
+        st.markdown("""
+        **Real-World Drug Success Stories**
+        
+        **What's included:**
+        This section showcases **5 blockbuster enzyme inhibitor drugs** that revolutionized medicine.
+        
+        **How to navigate:**
+        1. **Select a drug class** from the radio buttons above
+        2. **Read the drug card** (left panel) for key facts:
+           - Drug name and target enzyme
+           - Inhibition mechanism
+           - FDA approval date
+           - Market impact
+        3. **Study "How It Works"** section to understand the mechanism
+        4. **Analyze interactive charts** (right panel) showing:
+           - Clinical efficacy data
+           - Patient outcomes over time
+           - Comparative potency
+        
+        **The 5 Case Studies:**
+        
+        **1. Statins (Cholesterol)** 💊
+        - Example: Lipitor (Atorvastatin)
+        - Best-selling drug of all time
+        - Reduces cardiac deaths significantly
+        
+        **2. HIV Protease Inhibitors** 🦠
+        - Transformed HIV from fatal to manageable
+        - Increased life expectancy from ~1 year to near-normal
+        - Structure-based drug design success story
+        
+        **3. ACE Inhibitors (Blood Pressure)** ❤️
+        - Examples: Lisinopril, Enalapril
+        - One of most prescribed drug classes
+        - Inspired by snake venom peptides
+        
+        **4. Kinase Inhibitors (Cancer)** 🎗️
+        - Example: Gleevec (Imatinib)
+        - Revolutionized cancer treatment
+        - 95% remission rate in CML
+        
+        **5. COX-2 Inhibitors (Pain)** 🩹
+        - Selective pain relief
+        - Reduced GI side effects vs traditional NSAIDs
+        - Example of targeted drug design
+        
+        **Each case includes:**
+        - ✅ Mechanism of action
+        - ✅ Clinical trial data
+        - ✅ Interactive visualizations
+        - ✅ Real-world impact statistics
+        - ✅ References to original research
+        
+        *Click through each drug to see how enzyme inhibitor design led to life-saving medications!*
+        """)
     
     case_study = st.radio(
         "Select Drug Case Study:",
@@ -1021,6 +1330,87 @@ def main():
         show_case_studies()
     elif selected_section == "Kinetics":
         st.markdown('<div class="section-header">📊 Interactive Kinetics Explorer</div>', unsafe_allow_html=True)
+        
+        # User Guide for Kinetics
+        with st.expander("📖 How to Use the Kinetics Explorer", expanded=False):
+            st.markdown("""
+            **Advanced Enzyme Kinetics Analysis Tools**
+            
+            **Three Different Analysis Methods - Choose a Tab:**
+            
+            ---
+            
+            ### **Tab 1: Lineweaver-Burk Plot** 📐
+            
+            **Purpose:** Linear transformation of Michaelis-Menten equation to determine Km and Vmax
+            
+            **How to use:**
+            1. Adjust **Vmax slider** (10-200 μmol/min) - maximum velocity
+            2. Adjust **Km slider** (0.5-20 mM) - substrate affinity
+            3. Check **"Add Inhibitor"** to compare with/without inhibition
+            4. Select **inhibition type** (Competitive, Non-competitive, Uncompetitive)
+            5. Set **Ki value** (inhibitor dissociation constant)
+            6. Set **[I]** (inhibitor concentration)
+            
+            **Interpreting the plot:**
+            - **Y-intercept = 1/Vmax**
+            - **X-intercept = -1/Km**
+            - **Slope = Km/Vmax**
+            
+            **Distinguishing inhibition types:**
+            - **Competitive:** Lines intersect on Y-axis (same Vmax, different Km)
+            - **Non-competitive:** Lines intersect on X-axis (different Vmax, same Km)
+            - **Uncompetitive:** Parallel lines (both Vmax and Km change proportionally)
+            
+            ---
+            
+            ### **Tab 2: Eadie-Hofstee Plot** 📊
+            
+            **Purpose:** Alternative linear transformation with more uniform error distribution
+            
+            **How to use:**
+            1. Adjust **Vmax** and **Km** parameters
+            2. View linear relationship: v vs v/[S]
+            
+            **Advantages:**
+            - Better statistical properties than Lineweaver-Burk
+            - More uniform error distribution across the plot
+            - Y-intercept directly gives Vmax
+            - Slope = -Km
+            
+            **When to use:** Preferred for accurate parameter determination from experimental data
+            
+            ---
+            
+            ### **Tab 3: Kinetic Simulator** 🧪
+            
+            **Purpose:** Comprehensive Michaelis-Menten simulation with calculated parameters
+            
+            **How to use:**
+            1. Set **Vmax** (μmol/min) - maximum reaction velocity
+            2. Set **Km** (mM) - Michaelis constant
+            3. Set **[E]** enzyme concentration (μM)
+            4. Adjust **substrate range** (1-100 mM)
+            5. View calculated **kcat** and **kcat/Km** values
+            
+            **What you'll see:**
+            - **Upper plot:** Michaelis-Menten curve with Vmax and Km indicators
+            - **Lower plot:** Enzyme saturation percentage vs [S]
+            
+            **Calculated constants:**
+            - **kcat (turnover number):** Number of substrate molecules converted per enzyme per minute
+            - **kcat/Km (specificity constant):** Measure of catalytic efficiency
+            - Comparison to diffusion limit (~10⁸-10⁹ M⁻¹s⁻¹)
+            
+            **Applications:**
+            - Understanding enzyme saturation
+            - Comparing enzyme efficiency
+            - Visualizing substrate concentration effects
+            
+            ---
+            
+            **All plots update in real-time as you adjust parameters!**
+            """)
         
         st.write("""Explore enzyme kinetics through interactive plots and simulations. 
         Visualize Michaelis-Menten and Lineweaver-Burk plots under different inhibition conditions.""")
