@@ -118,7 +118,6 @@ def create_header():
             
             **6. 📖 References**
             - 26 peer-reviewed papers
-            - 12 textbooks
             - Online databases and resources
             - *Best for: Citations and further reading*
             
@@ -714,18 +713,7 @@ def show_references():
         
         ---
         
-        **Tab 2: Textbooks** 📚
-        - **12 recommended textbooks** for deeper learning
-        - Classic biochemistry references (Berg, Lehninger, Voet)
-        - Specialized enzyme kinetics texts (Cornish-Bowden)
-        - Medicinal chemistry and drug design books
-        - Pharmacology references (Goodman & Gilman)
-        
-        **Includes specific chapter recommendations** for relevant topics
-        
-        ---
-        
-        **Tab 3: Online Resources** 🌐
+        **Tab 2: Online Resources** 🌐
         - **Free databases:**
           - PubChem (chemical structures)
           - DrugBank (drug information)
@@ -741,7 +729,7 @@ def show_references():
         
         ---
         
-        **Tab 4: Citation** 📝
+        **Tab 3: Citation** 📝
         - How to cite this educational tool
         - GitHub repository link
         - License information
@@ -754,7 +742,7 @@ def show_references():
     st.write("""This educational tool is based on established principles in biochemistry and pharmacology.""")
     
     # Create tabs for different reference categories
-    tab1, tab2, tab3, tab4 = st.tabs(["Key Papers", "Textbooks", "Online Resources", "Citation"])
+    tab1, tab2, tab3 = st.tabs(["Key Papers", "Online Resources", "Citation"])
     
     with tab1:
         st.subheader("📄 Key Research Papers")
@@ -828,54 +816,6 @@ def show_references():
         """)
     
     with tab2:
-        st.subheader("📖 Recommended Textbooks")
-        
-        st.markdown("""**All references in APA 7th edition format.**
-
-#### Biochemistry & Enzyme Kinetics
-
-1. Berg, J. M., Tymoczko, J. L., Gatto, G. J., Jr., & Stryer, L. (2019). *Biochemistry* (9th ed.). W. H. Freeman and Company.
-   - Chapter 8: Enzymes: Basic Concepts and Kinetics
-   - Chapter 9: Catalytic Strategies
-   - Chapter 10: Regulatory Strategies
-
-2. Nelson, D. L., & Cox, M. M. (2021). *Lehninger principles of biochemistry* (8th ed.). W. H. Freeman.
-   - Chapter 6: Enzymes
-   - Chapter 12: Biosignaling
-
-3. Voet, D., Voet, J. G., & Pratt, C. W. (2016). *Fundamentals of biochemistry: Life at the molecular level* (5th ed.). Wiley.
-   - Chapter 12: Enzyme Kinetics, Inhibition, and Control
-
-4. Cornish-Bowden, A. (2012). *Fundamentals of enzyme kinetics* (4th ed.). Wiley-Blackwell.
-
-5. Price, N. C., & Stevens, L. (1999). *Fundamentals of enzymology: The cell and molecular biology of catalytic proteins* (3rd ed.). Oxford University Press.
-
-#### Drug Design & Medicinal Chemistry
-
-6. Silverman, R. B., & Holladay, M. W. (2014). *The organic chemistry of drug design and drug action* (3rd ed.). Academic Press.
-   - Chapter 4: Enzyme Inhibition and Inactivation
-   - Chapter 5: Receptor Binding and Drug Design
-
-7. Copeland, R. A. (2013). *Evaluation of enzyme inhibitors in drug discovery: A guide for medicinal chemists and pharmacologists* (2nd ed.). Wiley-Interscience.
-
-8. Patrick, G. L. (2017). *An introduction to medicinal chemistry* (6th ed.). Oxford University Press.
-   - Chapter 7: Enzymes as Drug Targets
-   - Chapter 20: Anticancer Agents
-
-9. Wermuth, C. G., Aldous, D., Raboisson, P., & Rognan, D. (Eds.). (2015). *The practice of medicinal chemistry* (4th ed.). Academic Press.
-
-10. Lemke, T. L., Williams, D. A., Roche, V. F., & Zito, S. W. (2020). *Foye's principles of medicinal chemistry* (8th ed.). Wolters Kluwer.
-
-#### Pharmacology
-
-11. Brunton, L. L., Hilal-Dandan, R., & Knollmann, B. C. (Eds.). (2018). *Goodman & Gilman's: The pharmacological basis of therapeutics* (13th ed.). McGraw-Hill Education.
-
-12. Katzung, B. G., & Trevor, A. J. (2021). *Basic & clinical pharmacology* (15th ed.). McGraw-Hill Education.
-   - Section II: Autonomic Drugs
-   - Section V: Drugs That Act in the Central Nervous System
-        """)
-    
-    with tab3:
         st.subheader("🌐 Online Resources")
         
         col1, col2 = st.columns(2)
@@ -906,7 +846,7 @@ def show_references():
 - *Drug Discovery Today*
             """)
     
-    with tab4:
+    with tab3:
         st.subheader("📝 How to Cite This Tool")
         
         st.markdown("""If you use this interactive educational tool in your teaching, research, or publications, 
