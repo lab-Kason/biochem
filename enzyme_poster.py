@@ -197,25 +197,25 @@ def show_mechanisms():
         substrate = np.linspace(0.1, 20, 100)
         velocity_no_inhibitor = vmax * substrate / (km + substrate)
         
-        if mechanism == "Competitive Inhibition":
-            alpha = 2  # Inhibition factor
-            velocity_inhibitor = vmax * substrate / (km * alpha + substrate)
-        elif mechanism == "Non-competitive Inhibition":
-            alpha = 2
-            velocity_inhibitor = (vmax / alpha) * substrate / (km + substrate)
-        elif mechanism == "Uncompetitive Inhibition":
-            alpha = 2  # Inhibition factor
-            velocity_inhibitor = (vmax / alpha) * substrate / (km / alpha + substrate)
-        else:  # Mixed Inhibition
-            alpha = 2.0  # Effect on Km (competitive component)
-            alpha_prime = 1.5  # Effect on Vmax (non-competitive component)
-            velocity_inhibitor = (vmax / alpha_prime) * substrate / ((km * alpha / alpha_prime) + substrate)
-        
         fig = go.Figure()
         fig.add_trace(go.Scatter(x=substrate, y=velocity_no_inhibitor, 
                                name='No Inhibitor', line=dict(color='blue')))
-        fig.add_trace(go.Scatter(x=substrate, y=velocity_inhibitor, 
-                               name='With Inhibitor', line=dict(color='red', dash='dash')))
+        
+        if show_inhibitor:
+            alpha = inhibitor_strength  # Use slider value
+            
+            if mechanism == "Competitive Inhibition":
+                velocity_inhibitor = vmax * substrate / (km * alpha + substrate)
+            elif mechanism == "Non-competitive Inhibition":
+                velocity_inhibitor = (vmax / alpha) * substrate / (km + substrate)
+            elif mechanism == "Uncompetitive Inhibition":
+                velocity_inhibitor = (vmax / alpha) * substrate / (km / alpha + substrate)
+            else:  # Mixed Inhibition
+                alpha_prime = alpha * 0.75  # Non-competitive component (75% of alpha)
+                velocity_inhibitor = (vmax / alpha_prime) * substrate / ((km * alpha / alpha_prime) + substrate)
+            
+            fig.add_trace(go.Scatter(x=substrate, y=velocity_inhibitor, 
+                                   name='With Inhibitor', line=dict(color='red', dash='dash')))
         
         fig.update_layout(
             title=f"Michaelis-Menten Kinetics - {mechanism}",
