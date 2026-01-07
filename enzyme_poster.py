@@ -154,7 +154,7 @@ def create_header():
 
 # Overview Section
 def show_overview():
-    st.markdown('<div class="section-header">📊 Executive Summary</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-header">📊 Executive Overview</div>', unsafe_allow_html=True)
     
     # User Guide
     with st.expander("📖 How to Use This Section", expanded=False):

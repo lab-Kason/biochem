@@ -1,24 +1,31 @@
-# jupyter (workspace)
+# Biochem Jupyter Notebooks
 
-This folder contains Jupyter notebooks and helper scripts for enzyme kinetics analysis.
+Molecular modeling environment for MD simulations and docking.
 
-Virtual environment
-- A venv has been created at: `.venv/` (Python interpreter: `.venv/bin/python`).
-- To activate the venv (macOS / zsh):
+## 🚀 Quick Start
 
 ```bash
-source .venv/bin/activate
+conda activate md-dock
+bash test_md_dock.sh
+code visualize_md_docking.ipynb
 ```
 
-Install dependencies
+## 📖 Documentation
 
-To install the pinned dependencies (created from the venv used here):
+**👉 Read this first:** [README_SETUP.md](README_SETUP.md) - Complete setup guide
 
-```bash
-python -m pip install --upgrade pip setuptools wheel
-python -m pip install -r requirements.txt
-```
+**Other files:**
+- `visualize_md_docking.ipynb` - Main notebook with examples
+- `test_md_dock.sh` - Test your installation  
+- `simple_docking_example.py` - RDKit conformer generation
+- `vina_example.py` - AutoDock Vina tutorial
 
-Notes
-- I renamed `import numpy as np.py` to `example_numpy_usage.py` to avoid shadowing the real `numpy` package when running code from this directory.
-- If you prefer a different filename, rename `example_numpy_usage.py` accordingly.
+## ✅ What's Installed
+
+- OpenMM, MDAnalysis, BioPython, RDKit, ProLIF
+- NGLView, Py3Dmol (3D visualization)
+- NumPy, SciPy, Pandas, Matplotlib
+- AutoDock Vina, Open Babel (command-line tools)
+
+**Environment:** md-dock (Python 3.11, conda)  
+**Status:** All 11 core packages working ✅
